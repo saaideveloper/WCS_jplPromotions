@@ -42,7 +42,7 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
     public function loadAttributeOptions()
     {
         $this->setAttributeOption([
-            'customizable' => __('WCS Customizable')
+            'customizable' => __('Custom JPL Discount For Some Foamex items not All')
         ]);
         return $this;
     }
@@ -88,7 +88,7 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
     public function validate(\Magento\Framework\Model\AbstractModel $model)
     {
         $customerId = $model->getCustomerId();
-        $model->setData('customizable', 1);
+        $model->setData('customizable', 0);
         return parent::validate($model);
     }
 }
