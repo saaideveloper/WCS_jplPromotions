@@ -128,12 +128,12 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
         //Get magento 2 model for the products to Discount
         $sku='Foamex';
         $optionTitle='Size';
-        $optionValue='A1';
+        $optionValue='A4';
 
         $product = $this->productFactory->create();
         $product->load($product->getIdBySku($sku));
 
-        if($this->isInCart($product)){
+        if($this->isInCart($product,$optionTitle,$optionValue)){
         //if($this->OptionIsInCart($product,$optionTitle,$optionValue)){
             $ApplyDiscount = 1;
         }else{
@@ -145,7 +145,7 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
         return parent::validate($model);
     }
 
-    public function isInCart($product)
+    public function isInCart($product,$optTitle,$optValue)
     {
         $productId = $product->getId();
         $cartItems = $this->checkoutSession->getQuote()->getAllVisibleItems();
@@ -159,7 +159,7 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
             foreach ($cartItems as $cartItem) {
                 $product = $cartItem->getProduct();
 
-                if($this->CustomOptionInCart($cartItem,'Size','A3','Foamex')){
+                if($this->CustomOptionInCart($cartItem,$optTitle,$optValue,'Foamex')){
                     return 1;
                 }
 
