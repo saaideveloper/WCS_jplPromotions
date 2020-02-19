@@ -126,18 +126,22 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
     public function validate(\Magento\Framework\Model\AbstractModel $model)
     {
         //Get magento 2 model for the products to Discount
-        $sku='test_configurable';
+        $sku='Foamex';
+        $optionTitle='Size';
+        $optionValue='A1';
 
         $product = $this->productFactory->create();
         $product->load($product->getIdBySku($sku));
 
-        if($this->isInCart($product)){
+        //if($this->isInCart($product)){
+        if($this->OptionIsInCart($product,$optionTitle,$optionValue)){
             $ApplyDiscount = 1;
         }else{
             $ApplyDiscount = 0;
         }
 
         $model->setData('customizable', $ApplyDiscount);
+        //$model->setData('customizable', 0);
         return parent::validate($model);
     }
 
@@ -145,13 +149,29 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
     {
 
         $productId = $product->getId();
-        $cartItems = $this->checkoutSession->getQuoteId();
+        $cartItems = $this->checkoutSession->getQuote()->getAllVisibleItems();
         $itemsIds = array();
         foreach ($cartItems as $cartItem) {
             array_push($itemsIds, $cartItem->getProduct()->getId());
         }
 
         return in_array($productId, $itemsIds);
+    }
+
+    public function OptionIsInCart($product,$optionTitle,$optionValue){
+        foreach ($product->getOptions() as $o) {
+            if ($o->getTitle() != $optionTitle) { // or another title of option
+                continue;
+            }else{
+                foreach ($o->getValues() as $value) {
+                    //print_r($value->getData());
+                    if($value->getData() == $optionValue){
+                        return 1;
+                    }
+                }
+            }
+        }
+
     }
 
 }
