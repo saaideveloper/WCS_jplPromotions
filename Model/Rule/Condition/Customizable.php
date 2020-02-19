@@ -133,8 +133,8 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
         $product = $this->productFactory->create();
         $product->load($product->getIdBySku($sku));
 
-        //if($this->isInCart($product)){
-        if($this->OptionIsInCart($product,$optionTitle,$optionValue)){
+        if($this->isInCart($product)){
+        //if($this->OptionIsInCart($product,$optionTitle,$optionValue)){
             $ApplyDiscount = 1;
         }else{
             $ApplyDiscount = 0;
@@ -147,15 +147,54 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
 
     public function isInCart($product)
     {
-
         $productId = $product->getId();
         $cartItems = $this->checkoutSession->getQuote()->getAllVisibleItems();
         $itemsIds = array();
         foreach ($cartItems as $cartItem) {
             array_push($itemsIds, $cartItem->getProduct()->getId());
         }
+//return in_array($productId, $itemsIds);
+        if (in_array($productId, $itemsIds)){
+//return 1;
+            foreach ($cartItems as $cartItem) {
+                $product = $cartItem->getProduct();
 
-        return in_array($productId, $itemsIds);
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+                $options = $cartItem->getProduct()->getTypeInstance(true)->getOrderOptions($cartItem->getProduct());
+                $customOptions = $options['options'];
+                if (!empty($customOptions)) {
+                    foreach ($customOptions as $option) {
+                        $optionTitle = $option['label'];
+                //        $optionId = $option['option_id'];
+                //        $optionType = $option['type'];
+                        $optionValue = $option['value'];
+
+                        if($optionTitle == 'Size'){
+                            
+                            if ($optionValue == 'A1'){
+                                return 1;
+                            }
+                        }
+                    }
+                }else{
+                }
+
+                foreach ($cartItem->getOptions() as $o) {
+                    if ($o->getTitle() == 'Size') { // or another title of option
+                    }
+                }
+                
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //END IF THE CART ITEM MATCH THE CUSTOM OPTION 
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            }
+        }
+return 0;
+        //return in_array($productId, $itemsIds);
     }
 
     public function OptionIsInCart($product,$optionTitle,$optionValue){
