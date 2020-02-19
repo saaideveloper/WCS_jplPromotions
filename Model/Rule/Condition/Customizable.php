@@ -2,37 +2,75 @@
 
 namespace WCS\jplPromotions\Model\Rule\Condition;
 
+use Exception;
+use Magento\Checkout\Model\Cart;
+use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Framework\App\CacheInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\Quote\Item;
+use Magento\Quote\Model\Quote\Item\Option;
+
+use Magento\Catalog\Model\ProductFactory;
+
 /**
  * Class Customer
  */
 class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
 {
+     /**
+     * @var CheckoutSession
+     */
+    protected $checkoutSession;
+
+    /**
+     * @var CacheInterface
+     */
+    protected $cache;
+
+    /**
+     * @var Cart
+     */
+    protected $cart;
+
+
     /**
      * @var \Magento\Config\Model\Config\Source\Yesno
      */
     protected $sourceYesno;
 
     /**
-     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
+     * @var \Magento\Catalog\Model\ProductFactory
      */
-    protected $orderFactory;
+    protected $productFactory;
 
     /**
      * Constructor
+     * @param CheckoutSession              $checkoutSession     Checkout session
+     * @param Cart                         $cart                Cart
+     * @param CacheInterface               $cache               Cache
      * @param \Magento\Rule\Model\Condition\Context $context
      * @param \Magento\Config\Model\Config\Source\Yesno $sourceYesno
-     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderFactory
+     * @param \Magento\Catalog\Model\ProductFactory $productFactory
      * @param array $data
      */
     public function __construct(
+        CheckoutSession $checkoutSession,
+        Cart $cart,
+        CacheInterface $cache,
         \Magento\Rule\Model\Condition\Context $context,
         \Magento\Config\Model\Config\Source\Yesno $sourceYesno,
-        \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderFactory,
+        ProductFactory $productFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
+
+        $this->checkoutSession = $checkoutSession;
+        $this->cart = $cart;
+        $this->cache = $cache;
+
         $this->sourceYesno = $sourceYesno;
-        $this->orderFactory = $orderFactory;
+        $this->productFactory = $productFactory;
     }
 
     /**
@@ -87,8 +125,33 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
      */
     public function validate(\Magento\Framework\Model\AbstractModel $model)
     {
-        $customerId = $model->getCustomerId();
-        $model->setData('customizable', 0);
+        //Get magento 2 model for the products to Discount
+        $sku='test_configurable';
+
+        $product = $this->productFactory->create();
+        $product->load($product->getIdBySku($sku));
+
+        if($this->isInCart($product)){
+            $ApplyDiscount = 1;
+        }else{
+            $ApplyDiscount = 0;
+        }
+
+        $model->setData('customizable', $ApplyDiscount);
         return parent::validate($model);
     }
+
+    public function isInCart($product)
+    {
+
+        $productId = $product->getId();
+        $cartItems = $this->checkoutSession->getQuoteId();
+        $itemsIds = array();
+        foreach ($cartItems as $cartItem) {
+            array_push($itemsIds, $cartItem->getProduct()->getId());
+        }
+
+        return in_array($productId, $itemsIds);
+    }
+
 }
