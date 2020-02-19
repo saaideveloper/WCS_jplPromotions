@@ -159,10 +159,14 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
             foreach ($cartItems as $cartItem) {
                 $product = $cartItem->getProduct();
 
+                if($this->CustomOptionInCart($cartItem,'Size','A3','Foamex')){
+                    return 1;
+                }
+
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
+/*
                 $options = $cartItem->getProduct()->getTypeInstance(true)->getOrderOptions($cartItem->getProduct());
                 $customOptions = $options['options'];
                 if (!empty($customOptions)) {
@@ -186,7 +190,7 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
                     if ($o->getTitle() == 'Size') { // or another title of option
                     }
                 }
-                
+*/                
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //END IF THE CART ITEM MATCH THE CUSTOM OPTION 
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -210,6 +214,37 @@ return 0;
                 }
             }
         }
+
+    }
+
+    public function CustomOptionInCart($cartItem,$optTitle,$optValue,$sku){
+
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+                $options = $cartItem->getProduct()->getTypeInstance(true)->getOrderOptions($cartItem->getProduct());
+                $customOptions = $options['options'];
+                if (!empty($customOptions)) {
+                    foreach ($customOptions as $option) {
+                        $optionTitle = $option['label'];
+                //        $optionId = $option['option_id'];
+                //        $optionType = $option['type'];
+                        $optionValue = $option['value'];
+
+                        if($optionTitle == $optTitle){
+                            
+                            if ($optionValue == $optValue){
+                                return 1;
+                            }
+                        }
+                    }
+                }else{
+                }
+                
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //END IF THE CART ITEM MATCH THE CUSTOM OPTION 
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    
 
     }
 
