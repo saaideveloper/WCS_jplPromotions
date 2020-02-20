@@ -1,17 +1,11 @@
 <?php
 /**
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade this module to newer
- * versions in the future.
- *
- * @category  Smile
- * @package   Smile\GiftSalesRule
- * @author    Maxime Queneau <maxime.queneau@smile.fr>
- * @copyright 2019 Smile
- * @license   Open Software License ("OSL") v. 3.0
+ * @category  WCS
+ * @package   WCS\jplPromotions
+ * @author    Sergio Abad <saaideveloper@gmail.com>
+ * @copyright Web Cloud Solutions Ltd
  */
-namespace Smile\GiftSalesRule\Model\Rule\Action\Discount;
+namespace WCS\jplPromotions\Model\Rule\Action\Discount;
 
 use Magento\Checkout\Model\Session as checkoutSession;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -21,17 +15,14 @@ use Magento\SalesRule\Model\Rule\Action\Discount\AbstractDiscount;
 use Magento\SalesRule\Model\Rule\Action\Discount\Data as DiscountData;
 use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
 use Magento\SalesRule\Model\Validator;
-use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
-use Smile\GiftSalesRule\Helper\Cache as GiftRuleCacheHelper;
-use Smile\GiftSalesRule\Model\GiftRule;
 
 /**
- * Class OfferProduct
+ * Class CustomizableProduct
  *
- * @author    Maxime Queneau <maxime.queneau@smile.fr>
- * @copyright 2019 Smile
+ * @author    Sergio Abad <saaideveloper@gmail.com>
+ * @copyright Web Cloud Solutions Ltd
  */
-class OfferProduct extends AbstractDiscount
+class CustomizableProduct extends AbstractDiscount
 {
     /**
      * @var checkoutSession
@@ -41,12 +32,12 @@ class OfferProduct extends AbstractDiscount
     /**
      * @var GiftRuleCacheHelper
      */
-    protected $giftRuleCacheHelper;
+    //protected $giftRuleCacheHelper;
 
     /**
      * @var GiftRuleRepositoryInterface
      */
-    protected $giftRuleRepository;
+    //protected $giftRuleRepository;
 
     /**
      * OfferProduct constructor.
@@ -55,20 +46,14 @@ class OfferProduct extends AbstractDiscount
      * @param DataFactory                 $discountDataFactory Discount data factory
      * @param PriceCurrencyInterface      $priceCurrency       Price currency
      * @param checkoutSession             $checkoutSession     Checkout session
-     * @param GiftRuleCacheHelper         $giftRuleCacheHelper Gift rule cache helper
-     * @param GiftRuleRepositoryInterface $giftRuleRepository  Gift rule repository
      */
     public function __construct(
         Validator $validator,
         DataFactory $discountDataFactory,
         PriceCurrencyInterface $priceCurrency,
-        checkoutSession $checkoutSession,
-        GiftRuleCacheHelper $giftRuleCacheHelper,
-        GiftRuleRepositoryInterface $giftRuleRepository
+        checkoutSession $checkoutSession
     ) {
         $this->checkoutSession = $checkoutSession;
-        $this->giftRuleCacheHelper = $giftRuleCacheHelper;
-        $this->giftRuleRepository = $giftRuleRepository;
 
         parent::__construct(
             $validator,
@@ -83,8 +68,6 @@ class OfferProduct extends AbstractDiscount
      * @param float        $qty  Qty
      *
      * @return DiscountData
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function calculate($rule, $item, $qty)
     {
@@ -98,14 +81,11 @@ class OfferProduct extends AbstractDiscount
         if (!$quote->getData($calculateId)) {
             // Set only for performance (not save in DB).
             $quote->setData($calculateId, true);
-
-            /** @var GiftRule $giftRule */
+/*
             $giftRule = $this->giftRuleRepository->getById($rule->getRuleId());
 
-            // Set number offered product.
             $giftRule->setNumberOfferedProduct($giftRule->getMaximumNumberProduct());
-
-            // Save active gift rule in session.
+*/
             $giftRuleSessionData = $this->checkoutSession->getGiftRules();
             $giftRuleSessionData[$rule->getRuleId()] = $rule->getRuleId();
             $this->checkoutSession->setGiftRules($giftRuleSessionData);
