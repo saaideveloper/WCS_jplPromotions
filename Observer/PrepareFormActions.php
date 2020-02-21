@@ -5,7 +5,7 @@
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
  */
-namespace WCS\plPromotions\Observer;
+namespace WCS\jplPromotions\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -43,7 +43,7 @@ class PrepareFormActions implements ObserverInterface
         JplRuleHelper $jplRuleHelper
     ) {
         $this->registry       = $registry;
-        $this->jplRuleHelper = $jplRuleHelper;
+        $this->JplRuleHelper = $jplRuleHelper;
     }
 
     /**
@@ -53,14 +53,14 @@ class PrepareFormActions implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if ($this->jplRuleHelper->isJplRule($this->getCurrentSalesRule())) {
-            /** @var \Magento\Framework\Data\Form $form */
+
+        if ($this->JplRuleHelper->isJplRule($this->getCurrentSalesRule())) {
             $form = $observer->getData('form');
-            /** @var \Magento\Framework\Data\Form\Element\Fieldset $element */
             $fieldset = $form->getElement('actions_fieldset');
 
             $fieldset->setData('legend', __('Select jpl products to Apply Discounts:'));
         }
+    
     }
 
     /**

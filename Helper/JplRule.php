@@ -21,7 +21,7 @@ use Magento\SalesRule\Model\Rule;
  * @author    Maxime Queneau <maxime.queneau@smile.fr>
  * @copyright 2019 Smile
  */
-class GiftRule extends AbstractHelper
+class JplRule extends AbstractHelper
 {
     /**
      * @var array
