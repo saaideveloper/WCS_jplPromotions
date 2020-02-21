@@ -19,7 +19,7 @@ interface JplRuleInterface
     //const TABLE_NAME             = 'smile_gift_salesrule';
     //const RULE_ID                = 'rule_id';
     const MAXIMUM_NUMBER_PRODUCT = 'maximum_number_product';
-    //const PRICE_RANGE            = 'price_range';
+    const PRICE_RANGE            = 'price_range';
 
     /**
      * Rule type actions
