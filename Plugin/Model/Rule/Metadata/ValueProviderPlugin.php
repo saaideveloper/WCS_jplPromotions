@@ -81,11 +81,12 @@ class ValueProviderPlugin
             'label' => __('to offer product per price range'),
             'value' => GiftRuleInterface::OFFER_PRODUCT_PER_PRICE_RANGE,
         ];
+*/
 
         $result['actions']['children']['maximum_number_product']['arguments']['data']['config'] = [
-            'value' => $extensionAttributes['gift_rule'][GiftRuleInterface::MAXIMUM_NUMBER_PRODUCT],
+            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::MAXIMUM_NUMBER_PRODUCT],
         ];
-
+/*
         $result['actions']['children']['price_range']['arguments']['data']['config'] = [
             'value' => $extensionAttributes['gift_rule'][GiftRuleInterface::PRICE_RANGE],
         ];
