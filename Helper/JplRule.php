@@ -26,7 +26,7 @@ class GiftRule extends AbstractHelper
     /**
      * @var array
      */
-    protected $giftRule = [];
+    protected $jplRule = [];
 
     /**
      * @var GiftRuleRepositoryInterface
@@ -37,33 +37,33 @@ class GiftRule extends AbstractHelper
      * GiftRule constructor.
      *
      * @param Context                     $context            Context
-     * @param array                       $giftRule           Gift rule
+     * @param array                       $jplRule           Jpl rule
      */
     public function __construct(
         Context $context,
         //GiftRuleRepositoryInterface $giftRuleRepository,
-        array $giftRule = []
+        array $jplRule = []
     ) {
         //$this->giftRuleRepository = $giftRuleRepository;
-        $this->giftRule = $giftRule;
+        $this->jplRule = $jplRule;
 
         parent::__construct($context);
     }
 
     /**
-     * Is gift sales rule
+     * Is jpl sales rule
      *
      * @param Rule $rule Rule
      *
      * @return bool
      */
-    public function isGiftRule(Rule $rule)
+    public function isJplRule(Rule $rule)
     {
-        $isGiftRule = false;
-        if (in_array($rule->getSimpleAction(), $this->giftRule)) {
-            $isGiftRule = true;
+        $isJplRule = false;
+        if (in_array($rule->getSimpleAction(), $this->jplRule)) {
+            $isJplRule = true;
         }
 
-        return $isGiftRule;
+        return $isJplRule;
     }
 }
