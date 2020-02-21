@@ -3,4 +3,8 @@
     <event name="salesrule_rule_condition_combine">
         <observer name="customer_rule" instance="WCS\jplPromotions\Observer\CustomerConditionObserver" />
     </event>
+
+    <event name="adminhtml_block_salesrule_actions_prepareform">
+        <observer name="wcs_jplpromotions_salesrule_prepareform" instance="WCS\jplPromotions\Observer\PrepareFormActions" />
+    </event>
 </config>
