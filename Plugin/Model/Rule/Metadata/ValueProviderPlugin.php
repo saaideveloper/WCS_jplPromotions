@@ -10,9 +10,10 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\Rule\Metadata\ValueProvider;
 
-use Smile\GiftSalesRule\Api\Data\GiftRuleInterface;
-use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
-use Smile\GiftSalesRule\Model\GiftRuleFactory;
+//use Smile\GiftSalesRule\Api\Data\GiftRuleInterface;
+use WCS\jplPromotions\Api\Data\JplRuleInterface;
+//use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
+//use Smile\GiftSalesRule\Model\GiftRuleFactory;
 
 /**
  * Add gift sales rule
@@ -27,14 +28,14 @@ class ValueProviderPlugin
      *
      * @var GiftRuleRepositoryInterface
      */
-    protected $giftRuleRepository;
+    //protected $giftRuleRepository;
 
     /**
      * Gift rule factory
      *
      * @var GiftRuleFactory
      */
-    protected $giftRuleFactory;
+    //protected $giftRuleFactory;
 
     /**
      * UpdateRuleDataObserver constructor.
@@ -43,11 +44,11 @@ class ValueProviderPlugin
      * @param GiftRuleFactory             $giftRuleFactory    Gift rule factory
      */
     public function __construct(
-        GiftRuleRepositoryInterface $giftRuleRepository,
-        GiftRuleFactory $giftRuleFactory
+        //GiftRuleRepositoryInterface $giftRuleRepository
+        //GiftRuleFactory $giftRuleFactory
     ) {
-        $this->giftRuleRepository = $giftRuleRepository;
-        $this->giftRuleFactory    = $giftRuleFactory;
+        //$this->giftRuleRepository = $giftRuleRepository;
+       // $this->giftRuleFactory    = $giftRuleFactory;
     }
     
     
@@ -69,9 +70,9 @@ class ValueProviderPlugin
         $extensionAttributes = $rule->getExtensionAttributes();
 
         $result['actions']['children']['simple_action']['arguments']['data']['config']['options'][] = [
-            'label' => __('jpl discount per item line'),
+            'label' => __('jpl new discount per item line'),
             //'value' =>'',
-            'value' => GiftRuleInterface::OFFER_PRODUCT,
+            'value' => JplRuleInterface::JPL_DISCOUNT_PRODUCT,
         ];
 
         return $result;
