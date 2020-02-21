@@ -86,17 +86,21 @@ class CustomizableProduct extends AbstractDiscount
 
             $giftRule->setNumberOfferedProduct($giftRule->getMaximumNumberProduct());
 */
+
+//Getting Data from the session
             $giftRuleSessionData = $this->checkoutSession->getGiftRules();
             $giftRuleSessionData[$rule->getRuleId()] = $rule->getRuleId();
+//Setting in the Session gift Rules           
             $this->checkoutSession->setGiftRules($giftRuleSessionData);
-
+//saveCacheGiftRule @@@ To Chech What this method Does @@@
+//Helper/Cache.php
             $this->giftRuleCacheHelper->saveCachedGiftRule(
                 $rule->getRuleId(),
                 $rule,
                 $giftRule
             );
         }
-
+//Returtn $discountData
         return $discountData;
     }
 }
