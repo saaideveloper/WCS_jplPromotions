@@ -40,15 +40,15 @@
                                 </action>
                                 <action name="4">
                                     <target>sales_rule_form.sales_rule_form.actions.discount_amount</target>
-                                    <callback>hide</callback>
+                                    <callback>show</callback>
                                 </action>
                                 <action name="5">
                                     <target>sales_rule_form.sales_rule_form.actions.discount_qty</target>
-                                    <callback>hide</callback>
+                                    <callback>show</callback>
                                 </action>
                                 <action name="6">
                                     <target>sales_rule_form.sales_rule_form.actions.discount_step</target>
-                                    <callback>hide</callback>
+                                    <callback>show</callback>
                                 </action>
                                 <action name="7">
                                     <target>sales_rule_form.sales_rule_form.actions.apply_to_shipping</target>
@@ -131,7 +131,7 @@
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
-                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                    <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
                 </validation>
                 <dataType>text</dataType>
                 <label translate="true">Jpl Customizable option Label from product</label>
@@ -153,7 +153,7 @@
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
-                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                    <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
                 </validation>
                 <dataType>text</dataType>
                 <label translate="true">Jpl Customizable option Title from product</label>
