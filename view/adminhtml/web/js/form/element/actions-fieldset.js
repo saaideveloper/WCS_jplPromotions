@@ -22,7 +22,6 @@ define([
             var value = uiRegistry
                 .get('sales_rule_form.sales_rule_form.actions.simple_action')
                 .value();
-            alert(value);
             return value == 'jpl_discount_product' || value == 'jpl_discount_product_per_price_range';
         },
 

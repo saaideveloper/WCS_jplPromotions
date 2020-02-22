@@ -20,7 +20,6 @@ define([
          * @returns {boolean}
          */
         isOfferProducRule: function () {
-            alert (this.value);
             return this.value() == 'jpl_discount_product' || this.value() == 'jpl_product_per_price_range';
         },
 
