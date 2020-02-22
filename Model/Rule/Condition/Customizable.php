@@ -126,15 +126,15 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
     public function validate(\Magento\Framework\Model\AbstractModel $model)
     {
         //Get magento 2 model for the products to Discount
-        $sku='Foamex';
+        $sku='FOA001';
         $optionTitle='Size';
         $optionValue='A4';
 
         $product = $this->productFactory->create();
         $product->load($product->getIdBySku($sku));
 
-        if($this->isInCart($product,$optionTitle,$optionValue)){
-        //if($this->OptionIsInCart($product,$optionTitle,$optionValue)){
+        if($this->isInCart($product,$optionTitle,'A1')){
+        //if($this->OptionIsInCart($product,$optionTitle,'AA')){
             $ApplyDiscount = 1;
         }else{
             $ApplyDiscount = 0;
@@ -153,9 +153,9 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
         foreach ($cartItems as $cartItem) {
             array_push($itemsIds, $cartItem->getProduct()->getId());
         }
-//return in_array($productId, $itemsIds);
+
         if (in_array($productId, $itemsIds)){
-//return 1;
+
             foreach ($cartItems as $cartItem) {
                 $product = $cartItem->getProduct();
 
@@ -163,41 +163,9 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
                     return 1;
                 }
 
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-/*
-                $options = $cartItem->getProduct()->getTypeInstance(true)->getOrderOptions($cartItem->getProduct());
-                $customOptions = $options['options'];
-                if (!empty($customOptions)) {
-                    foreach ($customOptions as $option) {
-                        $optionTitle = $option['label'];
-                //        $optionId = $option['option_id'];
-                //        $optionType = $option['type'];
-                        $optionValue = $option['value'];
-
-                        if($optionTitle == 'Size'){
-                            
-                            if ($optionValue == 'A1'){
-                                return 1;
-                            }
-                        }
-                    }
-                }else{
-                }
-
-                foreach ($cartItem->getOptions() as $o) {
-                    if ($o->getTitle() == 'Size') { // or another title of option
-                    }
-                }
-*/                
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                //END IF THE CART ITEM MATCH THE CUSTOM OPTION 
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
             }
         }
-return 0;
         //return in_array($productId, $itemsIds);
     }
 
