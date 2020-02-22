@@ -16,8 +16,14 @@
                         <rule name="0">
                             <value>jpl_discount_product</value>
                             <actions>
+                                <!--
                                 <action name="0">
                                     <target>sales_rule_form.sales_rule_form.actions.maximum_number_product</target>
+                                    <callback>show</callback>
+                                </action>
+                                -->
+                                <action name="0">
+                                    <target>sales_rule_form.sales_rule_form.actions.jpl_promotions_sku</target>
                                     <callback>show</callback>
                                 </action>
                                 <action name="1">
@@ -81,5 +87,38 @@
                 <visible>false</visible>
             </settings>
         </field>
+        <!-- BEGIN adding fields for jpl promotions-->
+        
+        <!-- begin SKU -->
+         <field name="jpl_promotions_sku" formElement="input" sortOrder="2">
+            <!--
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">sales_rule</item>
+                </item>
+            </argument>
+            -->
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Jpl SKU</label>
+                <!--<dataScope>extension_attributes.jpl_rule.maximum_number_product</dataScope>-->
+                <visible>false</visible>
+            </settings>
+        </field>
+        <!-- end SKU -->
+
+        <!-- begin Product Customizable Option Label -->
+        <!-- begin Product Customizable Option Label -->
+
+        <!-- begin Product Customizable Option Title -->
+        <!-- begin Product Customizable Option Title -->
+
+        <!-- END adding fields for jpl promotions-->
+
+
     </fieldset>
 </form>
