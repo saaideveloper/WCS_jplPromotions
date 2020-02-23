@@ -16,10 +16,14 @@ namespace WCS\jplPromotions\Api\Data;
  */
 interface JplRuleInterface
 {
-    //const TABLE_NAME             = 'smile_gift_salesrule';
-    //const RULE_ID                = 'rule_id';
+    const TABLE_NAME             = 'wcs_jplpromotions_salesrule';
+    const RULE_ID                = 'rule_id';
     const MAXIMUM_NUMBER_PRODUCT = 'maximum_number_product';
     const PRICE_RANGE            = 'price_range';
+    const JPL_SKU                = 'wcs_jplpromotions_sku';
+    const JPL_CUSTOMIZABLE_LABEL = 'wcs_jplpromotions_cutomizable_label_title';
+    const JPL_CUSTOMIZABLE_VALUE = 'wcs_jplpromotions_cutomizable_value';
+    
 
     /**
      * Rule type actions
@@ -55,4 +59,26 @@ interface JplRuleInterface
      * @return $this
      */
     public function setPriceRange($value);
+
+    /**
+     * Get the product sku to apply the discount.
+     *
+     * @return text
+     */
+    public function getWcsJplpromotionsSku();
+
+    /**
+     * Set the product sku to apply the discount.
+     *
+     * @param text $value Value
+     * @return $this
+     */
+    public function setWcsJplpromotionsSku();
+
+    
+    public function getWcsJplpromotionsCutomizableLabelTitle();
+    public function setWcsJplpromotionsCutomizableLabelTitle();
+
+    public function getWcsJplpromotionsCutomizableValue();
+    public function setWcsJplpromotionsCutomizableValue();
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  WCS
+ * @package   WCS\jplPromotions
+ * @author    Sergio Abad <saaideveloper@gmail.com>
+ * @copyright Web Cloud Solutions Ltd
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="wcs_jplpromotions_salesrule" resource="default" engine="innodb" comment="WCS jplpromotions salesrule table">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="false" default="0"
+                comment="Rule Id"/>
+        <column xsi:type="text" name="wcs_jplpromotions_sku" padding="10" unsigned="true" nullable="true"
+                identity="false" default="0" comment="sku for jpl promotions"/>
+        <column xsi:type="text" name="wcs_jplpromotions_cutomizable_label_title" padding="10" unsigned="true" nullable="true"
+                identity="false" default="0" comment="Name of the Customizable Option"/>
+        <column xsi:type="text" name="wcs_jplpromotions_cutomizable_value" padding="10" unsigned="true" nullable="true"
+                identity="false" default="0" comment="Value of the Customizable Option"/>
+        <column xsi:type="int" name="maximum_number_product" padding="10" unsigned="true" nullable="true"
+                identity="false" default="0" comment="Maximum number product"/>
+        <column xsi:type="decimal" name="price_range" unsigned="true" nullable="true" scale="4" precision="12"
+                comment="Price range"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FL_ALLOWED_RULE_ID" table="wcs_jplpromotions_salesrule"
+                    column="rule_id" referenceTable="salesrule" referenceColumn="rule_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>
