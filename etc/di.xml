@@ -27,5 +27,26 @@
             </argument>
         </arguments>
     </type>
+
+    <preference for="WCS\jplPromotions\Api\Data\JplRuleInterface" type="WCS\jplPromotions\Model\JplRule" />
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="WCS\jplPromotions\Api\Data\JplRuleInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">wcs_jplpromotions_salesrule</item>
+                    <item name="identifierField" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="WCS\jplPromotions\Api\Data\JplRuleInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
     
 </config>
