@@ -12,14 +12,14 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Quote\Model\Quote;
 use Magento\SalesRule\Model\Rule;
-//use Smile\GiftSalesRule\Api\Data\GiftRuleInterface;
+
+use WCS\jplPromotions\Api\Data\JplRuleInterface;
 //use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
 
 /**
- * Gift rule helper
- *
- * @author    Maxime Queneau <maxime.queneau@smile.fr>
- * @copyright 2019 Smile
+ * Jpl rule helper *
+ * @author    Sergio Abad <saaideveloper@gmail.com>
+ * @copyright Web Cloud Solutions Ltd
  */
 class JplRule extends AbstractHelper
 {
@@ -65,5 +65,36 @@ class JplRule extends AbstractHelper
         }
 
         return $isJplRule;
+    }
+
+    /**
+     * Check if is valid gift rule for quote
+     *
+     * @param Rule  $rule  Rule
+     * @param Quote $quote Quote
+     *
+     * @return bool
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function isValidRule(Rule $rule, Quote $quote)
+    {
+        $valid = true;
+
+        /**
+         * Check if quote has at least one quote item (no gift rule item) in quote
+         */
+        /*
+        $hasProduct = false;
+        foreach ($quote->getAllItems() as $item) {
+            if (!$item->getOptionByCode('option_gift_rule')) {
+                $hasProduct = true;
+                break;
+            }
+        }*/
+        if (!$hasProduct) {
+            $valid = false;
+        }
+
+        return $valid;
     }
 }

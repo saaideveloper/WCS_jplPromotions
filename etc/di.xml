@@ -13,6 +13,10 @@
         <plugin name="jpl_promotion_sales_rules_value_provider" type="WCS\jplPromotions\Plugin\Model\Rule\Metadata\ValueProviderPlugin" />
     </type>
 
+    <type name="Magento\SalesRule\Model\Rule\Condition\Product\Combine">
+        <plugin name="wcs_jplpromotions_sales_rules_condition_product_combine" type="WCS\jplPromotions\Plugin\Model\Rule\Condition\Product\CombinePlugin" />
+    </type>
+
     <type name="Magento\Framework\EntityManager\MetadataPool">
         <arguments>
             <argument name="metadata" xsi:type="array">
