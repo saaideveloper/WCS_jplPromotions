@@ -13,6 +13,10 @@ use Magento\SalesRule\Model\Rule\Metadata\ValueProvider;
 //use Smile\GiftSalesRule\Api\Data\GiftRuleInterface;
 use WCS\jplPromotions\Api\Data\JplRuleInterface;
 //use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
+
+//!!!! IMPORTANT !!!!! THE FOLLOWING LOAD THE MODEL
+//!!!! IMPORTANT !!!!! THE FOLLOWING LOAD THE MODEL
+//!!!! IMPORTANT !!!!! THE FOLLOWING LOAD THE MODEL
 //use Smile\GiftSalesRule\Model\GiftRuleFactory;
 
 /**
