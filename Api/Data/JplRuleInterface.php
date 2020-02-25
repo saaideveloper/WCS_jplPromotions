@@ -1,7 +1,7 @@
 <?php
 /**
  * @category  WCS
- * @package   WCS\JplPromotions
+ * @package   WCS\jplPromotions
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
  */
