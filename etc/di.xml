@@ -8,11 +8,75 @@
         </arguments>
     </type>
 
-    <!-- -->
+    <!-- Plugins -->
     <type name="Magento\SalesRule\Model\Rule\Metadata\ValueProvider">
         <plugin name="jpl_promotion_sales_rules_value_provider" type="WCS\jplPromotions\Plugin\Model\Rule\Metadata\ValueProviderPlugin" />
     </type>
 
+    <!-- Proxy -->
+    <type name="WCS\jplPromotions\Helper\JplRule">
+        <arguments>
+            <argument name="jplRule" xsi:type="array">
+                <item name="1" xsi:type="const">WCS\jplPromotions\Api\Data\JplRuleInterface::JPL_DISCOUNT_PRODUCT</item>
+            </argument>
+        </arguments>
+    </type>
+
+     <!-- Handlers -->
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="create_jpl_rule" xsi:type="string">WCS\jplPromotions\Model\SalesRule\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="update_jpl_rule" xsi:type="string">WCS\jplPromotions\Model\SalesRule\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="read_jpl_rule" xsi:type="string">WCS\jplPromotions\Model\SalesRule\ReadHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--
+    <preference for="WCS\jplPromotions\Api\Data\JplRuleSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+-->
+    <preference for="WCS\jplPromotions\Api\Data\JplRuleInterface" type="WCS\jplPromotions\Model\JplRule" />
+    <preference for="WCS\jplPromotions\Api\JplRuleRepositoryInterface" type="WCS\jplPromotions\Model\JplRuleRepository" />
+    <preference for="WCS\jplPromotions\Api\JplRuleServiceInterface" type="WCS\jplPromotions\Model\JplRuleService" />
+    <preference for="WCS\jplPromotions\Api\Data\JplRuleDataInterface" type="WCS\jplPromotions\Model\JplRuleData" />
+<!--
+ <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="WCS\jplPromotions\Api\Data\GiftRuleRepository" xsi:type="string">Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+-->
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="WCS\jplPromotions\Api\Data\JplRuleInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">wcs_jplpromotions_salesrule</item>
+                    <item name="identifierField" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+<!-- THIS READ THE DATA FROM THE DB AND DISPLAY IT ON CART RULES Discount-->
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="WCS\JplPromotions\Api\Data\JplRuleInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+<!--
     <type name="Magento\SalesRule\Model\Rule\Condition\Product\Combine">
         <plugin name="wcs_jplpromotions_sales_rules_condition_product_combine" type="WCS\jplPromotions\Plugin\Model\Rule\Condition\Product\CombinePlugin" />
     </type>
@@ -27,26 +91,6 @@
             </argument>
         </arguments>
     </type>
-
     <preference for="WCS\jplPromotions\Api\Data\JplRuleInterface" type="WCS\jplPromotions\Model\JplRule" />
-
-    <type name="Magento\Framework\EntityManager\MetadataPool">
-        <arguments>
-            <argument name="metadata" xsi:type="array">
-                <item name="WCS\jplPromotions\Api\Data\JplRuleInterface" xsi:type="array">
-                    <item name="entityTableName" xsi:type="string">wcs_jplpromotions_salesrule</item>
-                    <item name="identifierField" xsi:type="string">rule_id</item>
-                </item>
-            </argument>
-        </arguments>
-    </type>
-    <type name="Magento\Framework\EntityManager\HydratorPool">
-        <arguments>
-            <argument name="hydrators" xsi:type="array">
-                <item name="WCS\jplPromotions\Api\Data\JplRuleInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
-            </argument>
-        </arguments>
-    </type>
-
-    
+-->
 </config>
