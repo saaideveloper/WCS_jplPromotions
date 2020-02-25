@@ -5,7 +5,7 @@
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
  */
-namespace WCS\GiftSalesRule\Model;
+namespace WCS\jplPromotions\Model;
 
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
@@ -20,7 +20,7 @@ use WCS\jplPromotions\Api\Data\JplRuleInterface;
  */
 class JplRule extends AbstractModel implements JplRuleInterface, IdentityInterface
 {
-    const CACHE_TAG = 'smile_gift_sales_rule_gift_rule';
+    const CACHE_TAG = 'wcs_jplpromotions_sales_rule_jpl_rule';
 
     /**
      * @var string
