@@ -25,15 +25,16 @@
                                     <target>sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_sku</target>
                                     <callback>show</callback>
                                 </action>
-<!--
+
                                 <action name="1">
-                                    <target>sales_rule_form.sales_rule_form.actions.jpl_promotions_customizable_option_label_product</target>
+                                    <target>sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_label_title</target>
                                     <callback>show</callback>
                                 </action>
                                  <action name="2">
-                                    <target>sales_rule_form.sales_rule_form.actions.jpl_promotions_customizable_option_title_product</target>
+                                    <target>sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_value</target>
                                     <callback>show</callback>
                                 </action>
+<!--
                                 <action name="3">
                                     <target>sales_rule_form.sales_rule_form.actions.price_range</target>
                                     <callback>hide</callback>
