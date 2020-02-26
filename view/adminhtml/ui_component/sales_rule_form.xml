@@ -111,7 +111,7 @@
                     <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
                 </validation>
                 <dataType>text</dataType>
-                <label translate="true">Jpl SKU</label>
+                <label translate="true">Jpl SKU.</label>
                 <dataScope>extension_attributes.jpl_rule.sku_promotion</dataScope>
                 <visible>true</visible>
             </settings>
