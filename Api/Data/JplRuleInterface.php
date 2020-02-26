@@ -65,7 +65,7 @@ interface JplRuleInterface
      *
      * @return text
      */
-    //public function getWcsJplpromotionsSku();
+    public function getWcsJplpromotionsSku();
 
     /**
      * Set the product sku to apply the discount.
@@ -73,7 +73,7 @@ interface JplRuleInterface
      * @param text $value Value
      * @return $this
      */
-    //public function setWcsJplpromotionsSku();
+    public function setWcsJplpromotionsSku();
 
     
     //public function getWcsJplpromotionsCutomizableLabelTitle();
