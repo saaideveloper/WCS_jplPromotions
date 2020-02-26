@@ -70,10 +70,14 @@ class ReadHandler implements ExtensionInterface
                 $attributes['jpl_rule'][JplRuleInterface::MAXIMUM_NUMBER_PRODUCT] = $maximumNumber;
                 $attributes['jpl_rule'][JplRuleInterface::PRICE_RANGE] = $jplRule->getPriceRange();
                 $attributes['jpl_rule'][JplRuleInterface::JPL_SKU] = $jplRule->getWcsJplpromotionsSku();               
+                $attributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_LABEL] = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
+                $attributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_VALUE] = $jplRule->getWcsJplpromotionsCutomizableValue();               
             } catch (NoSuchEntityException $exception) {
                 $attributes['jpl_rule'][JplRuleInterface::MAXIMUM_NUMBER_PRODUCT] = null;
                 $attributes['jpl_rule'][JplRuleInterface::PRICE_RANGE] = null;
                 $attributes['jpl_rule'][JplRuleInterface::JPL_SKU] = null;
+                $attributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_LABEL] = null;
+                $attributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_VALUE] = null;
             }
         }
         $entity->setExtensionAttributes($attributes);
