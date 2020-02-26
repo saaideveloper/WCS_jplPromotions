@@ -64,6 +64,22 @@ class JplRule extends AbstractModel implements JplRuleInterface, IdentityInterfa
     /**
      * {@inheritdoc}
      */
+    public function getWcsJplpromotionsSku()
+    {
+        return $this->getData(self::JPL_SKU);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setWcsJplpromotionsSku($jplSku)
+    {
+        return $this->setData(self::JPL_SKU, $jplSku);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getPriceRange()
     {
         return $this->getData(self::PRICE_RANGE);
