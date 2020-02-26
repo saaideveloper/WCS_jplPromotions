@@ -22,7 +22,7 @@
                                 </action>
 
                                 <action name="0">
-                                    <target>sales_rule_form.sales_rule_form.actions.jpl_promotions_sku</target>
+                                    <target>sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_sku</target>
                                     <callback>show</callback>
                                 </action>
 <!--
