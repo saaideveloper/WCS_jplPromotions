@@ -98,7 +98,7 @@ class JplRule extends AbstractModel implements JplRuleInterface, IdentityInterfa
      */
     public function getWcsJplpromotionsCutomizableValue()
     {
-        return $this->getData(self::JPL_CUSTOMIZABLE_LABEL);
+        return $this->getData(self::JPL_CUSTOMIZABLE_VALUE);
     }
 
     /**
@@ -106,7 +106,7 @@ class JplRule extends AbstractModel implements JplRuleInterface, IdentityInterfa
      */
     public function setWcsJplpromotionsCutomizableValue($jplCustomizableValue)
     {
-        return $this->setData(self::JPL_CUSTOMIZABLE_LABEL, $jplCustomizableValue);
+        return $this->setData(self::JPL_CUSTOMIZABLE_VALUE, $jplCustomizableValue);
     }
 
     
