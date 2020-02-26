@@ -140,6 +140,8 @@ class JplRule extends AbstractModel implements JplRuleInterface, IdentityInterfa
         $this->setMaximumNumberProduct($values['maximum_number_product']);
         $this->setPriceRange($values['price_range']);
         $this->setWcsJplpromotionsSku($values['wcs_jplpromotions_sku']);
+        $this->setWcsJplpromotionsCutomizableLabelTitle($values['wcs_jplpromotions_cutomizable_label_title']);
+        $this->setWcsJplpromotionsCutomizableValue($values['wcs_jplpromotions_cutomizable_value']);
 
         return $this;
     }
