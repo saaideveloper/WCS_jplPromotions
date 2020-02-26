@@ -119,36 +119,33 @@
         <!-- end SKU -->
 
         <!-- begin Product Customizable Option Label -->
-        <field name="jpl_promotions_customizable_option_label_product" formElement="input" sortOrder="2">
-            <!--
-                             <argument name="data" xsi:type="array">
+        <field name="wcs_jplpromotions_cutomizable_label_title" formElement="input" sortOrder="2">
+            <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">sales_rule</item>
                 </item>
             </argument>
-            -->
             <settings>
-                <!--<validation>
+                <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
-                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
-                </validation>-->
+                    <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
+                </validation>
                 <dataType>text</dataType>
                 <label translate="true">Jpl Customizable option Label from product</label>
-                <!--<dataScope>extension_attributes.jpl_rule.maximum_number_product</dataScope>-->
-                <visible>false</visible>
+                <dataScope>extension_attributes.jpl_rule.wcs_jplpromotions_cutomizable_label_title</dataScope>
+                <visible>true</visible>
             </settings>
         </field>
         <!-- begin Product Customizable Option Label -->
 
         <!-- begin Product Customizable Option Title -->
-        <field name="jpl_promotions_customizable_option_title_product" formElement="input" sortOrder="2">
-            <!--
+        <field name="wcs_jplpromotions_cutomizable_value" formElement="input" sortOrder="2">
+            
                              <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">sales_rule</item>
                 </item>
             </argument>
-            -->
             <settings>
             <!--
                 <validation>
@@ -157,8 +154,8 @@
                 </validation>-->
                 <dataType>text</dataType>
                 <label translate="true">Jpl Customizable option Title from product</label>
-                <!--<dataScope>extension_attributes.jpl_rule.maximum_number_product</dataScope>-->
-                <visible>false</visible>
+                <dataScope>extension_attributes.jpl_rule.wcs_jplpromotions_cutomizable_value</dataScope>
+                <visible>true</visible>
             </settings>
         </field>
         <!-- begin Product Customizable Option Title -->
