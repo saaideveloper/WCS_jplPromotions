@@ -73,7 +73,7 @@ interface JplRuleInterface
      * @param text $value Value
      * @return $this
      */
-    public function setWcsJplpromotionsSku();
+    public function setWcsJplpromotionsSku($value);
 
     
     //public function getWcsJplpromotionsCutomizableLabelTitle();
