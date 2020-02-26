@@ -86,6 +86,14 @@ class ValueProviderPlugin
             'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::JPL_SKU],
         ];
 
+        $result['actions']['children']['wcs_jplpromotions_cutomizable_label_title']['arguments']['data']['config'] = [
+            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_LABEL],
+        ];
+
+        $result['actions']['children']['wcs_jplpromotions_cutomizable_value']['arguments']['data']['config'] = [
+            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_VALUE],
+        ];
+
         return $result;
 /*
         $result['actions']['children']['simple_action']['arguments']['data']['config']['options'][] = [
