@@ -75,10 +75,31 @@ interface JplRuleInterface
      */
     public function setWcsJplpromotionsSku($value);
 
-    
-    //public function getWcsJplpromotionsCutomizableLabelTitle();
-    //public function setWcsJplpromotionsCutomizableLabelTitle();
+    /**
+     * Get the product sku to apply the discount.
+     *
+     * @return text
+     */
+    public function getWcsJplpromotionsCutomizableLabelTitle();
+    /**
+     * Set the product sku to apply the discount.
+     *
+     * @param text $value Value
+     * @return $this
+     */
+    public function setWcsJplpromotionsCutomizableLabelTitle($value);
 
-    //public function getWcsJplpromotionsCutomizableValue();
-    //public function setWcsJplpromotionsCutomizableValue();
+    /**
+     * Get the product sku to apply the discount.
+     *
+     * @return text
+     */
+    public function getWcsJplpromotionsCutomizableValue();
+    /**
+     * Set the product sku to apply the discount.
+     *
+     * @param text $value Value
+     * @return $this
+     */
+    public function setWcsJplpromotionsCutomizableValue($value);
 }
