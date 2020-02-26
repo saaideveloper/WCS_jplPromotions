@@ -133,7 +133,7 @@ class Customizable extends \Magento\Rule\Model\Condition\AbstractCondition
         $product = $this->productFactory->create();
         $product->load($product->getIdBySku($sku));
 
-        if($this->isInCart($product,$optionTitle,'A1')){
+        if($this->isInCart($product,$optionTitle,$optionValue)){
         //if($this->OptionIsInCart($product,$optionTitle,'AA')){
             $ApplyDiscount = 1;
         }else{
