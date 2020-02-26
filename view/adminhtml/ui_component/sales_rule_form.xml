@@ -20,11 +20,12 @@
                                     <target>sales_rule_form.sales_rule_form.actions.maximum_number_product</target>
                                     <callback>show</callback>
                                 </action>
-<!--
-                                     <action name="0">
+
+                                <action name="0">
                                     <target>sales_rule_form.sales_rule_form.actions.jpl_promotions_sku</target>
                                     <callback>show</callback>
                                 </action>
+<!--
                                 <action name="1">
                                     <target>sales_rule_form.sales_rule_form.actions.jpl_promotions_customizable_option_label_product</target>
                                     <callback>show</callback>
@@ -99,23 +100,20 @@
         
         <!-- begin SKU -->
          <field name="jpl_promotions_sku" formElement="input" sortOrder="2">
-            <!--
-                             <argument name="data" xsi:type="array">
+            <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">sales_rule</item>
                 </item>
             </argument>
-            -->
             <settings>
-            <!--
-                                 <validation>
-                    <<rule name="required-entry" xsi:type="boolean">true</rule>
-                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
-                </validation>-->
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                    <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
+                </validation>
                 <dataType>text</dataType>
                 <label translate="true">Jpl SKU</label>
-                <!--<dataScope>extension_attributes.jpl_rule.maximum_number_product</dataScope>-->
-                <visible>false</visible>
+                <dataScope>extension_attributes.jpl_rule.sku_promotion</dataScope>
+                <visible>true</visible>
             </settings>
         </field>
         <!-- end SKU -->
@@ -131,7 +129,7 @@
             -->
             <settings>
                 <!--<validation>
-                                         <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
                     <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
                 </validation>-->
                 <dataType>text</dataType>
@@ -153,7 +151,7 @@
             -->
             <settings>
             <!--
-                                 <validation>
+                <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                     <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
                 </validation>-->
