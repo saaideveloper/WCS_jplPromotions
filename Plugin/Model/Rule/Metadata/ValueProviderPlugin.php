@@ -75,8 +75,15 @@ class ValueProviderPlugin
 
         $result['actions']['children']['simple_action']['arguments']['data']['config']['options'][] = [
             'label' => __('jpl new discount per item line'),
-            //'value' =>'',
             'value' => JplRuleInterface::JPL_DISCOUNT_PRODUCT,
+        ];
+
+        $result['actions']['children']['maximum_number_product']['arguments']['data']['config'] = [
+            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::MAXIMUM_NUMBER_PRODUCT],
+        ];
+
+        $result['actions']['children']['wcs_jplpromotions_sku']['arguments']['data']['config'] = [
+            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::JPL_SKU],
         ];
 
         return $result;
@@ -87,9 +94,7 @@ class ValueProviderPlugin
         ];
 */
 
-        $result['actions']['children']['maximum_number_product']['arguments']['data']['config'] = [
-            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::MAXIMUM_NUMBER_PRODUCT],
-        ];
+        
 /*
         $result['actions']['children']['price_range']['arguments']['data']['config'] = [
             'value' => $extensionAttributes['gift_rule'][GiftRuleInterface::PRICE_RANGE],
