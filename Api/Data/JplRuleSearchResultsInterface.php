@@ -5,7 +5,7 @@
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
  */
-namespace WCS\JplPromotions\Api\Data;
+namespace WCS\jplPromotions\Api\Data;
 
 use Magento\Framework\Api\SearchResultsInterface;
 
