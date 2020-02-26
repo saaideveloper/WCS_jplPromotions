@@ -41,14 +41,12 @@
         </arguments>
     </type>
 
-    <!--
     <preference for="WCS\jplPromotions\Api\Data\JplRuleSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
--->
     <preference for="WCS\jplPromotions\Api\Data\JplRuleInterface" type="WCS\jplPromotions\Model\JplRule" />
     <preference for="WCS\jplPromotions\Api\JplRuleRepositoryInterface" type="WCS\jplPromotions\Model\JplRuleRepository" />
     <preference for="WCS\jplPromotions\Api\JplRuleServiceInterface" type="WCS\jplPromotions\Model\JplRuleService" />
     <preference for="WCS\jplPromotions\Api\Data\JplRuleDataInterface" type="WCS\jplPromotions\Model\JplRuleData" />
-<!--
+ 
  <type name="Magento\Framework\Model\Entity\RepositoryFactory">
         <arguments>
             <argument name="entities" xsi:type="array">
@@ -56,7 +54,7 @@
             </argument>
         </arguments>
     </type>
--->
+
     <type name="Magento\Framework\EntityManager\MetadataPool">
         <arguments>
             <argument name="metadata" xsi:type="array">
@@ -75,22 +73,4 @@
             </argument>
         </arguments>
     </type>
-
-<!--
-    <type name="Magento\SalesRule\Model\Rule\Condition\Product\Combine">
-        <plugin name="wcs_jplpromotions_sales_rules_condition_product_combine" type="WCS\jplPromotions\Plugin\Model\Rule\Condition\Product\CombinePlugin" />
-    </type>
-
-    <type name="Magento\Framework\EntityManager\MetadataPool">
-        <arguments>
-            <argument name="metadata" xsi:type="array">
-                <item name="WCS\jplPromotions\Api\Data\JplRuleInterface" xsi:type="array">
-                    <item name="entityTableName" xsi:type="string">wcs_jplpromotions_salesrule</item>
-                    <item name="identifierField" xsi:type="string">rule_id</item>
-                </item>
-            </argument>
-        </arguments>
-    </type>
-    <preference for="WCS\jplPromotions\Api\Data\JplRuleInterface" type="WCS\jplPromotions\Model\JplRule" />
--->
 </config>
