@@ -99,7 +99,7 @@
         <!-- BEGIN adding fields for jpl promotions-->
         
         <!-- begin SKU -->
-         <field name="jpl_promotions_sku" formElement="input" sortOrder="2">
+         <field name="wcs_jplpromotions_sku" formElement="input" sortOrder="2">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">sales_rule</item>
