@@ -81,7 +81,7 @@ define([
         /**
          * Display or not "Cart Item Attribute" in product select
          */
-/*        
+   
         updateProductSelect: function () {
             var optgroup = $("optgroup[label='jpl Cart Item Attribute']");
 
@@ -91,6 +91,6 @@ define([
                 optgroup.show();
             }
         }
-*/
+
     });
 });
