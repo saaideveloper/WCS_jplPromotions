@@ -85,22 +85,17 @@ class CustomizableProduct extends AbstractDiscount
     {
         /** @var \Magento\SalesRule\Model\Rule\Action\Discount\Data $discountData */
         $discountData = $this->discountFactory->create();
-
-        /** @var \Magento\Quote\Model\Quote $quote */
+/*
         $quote = $item->getQuote();
 
         $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
         if (!$quote->getData($calculateId)) {
-            // Set only for performance (not save in DB).
             $quote->setData($calculateId, true);
 
-            /** @var JplRule $jplRule */
             $jplRule = $this->jplRuleRepository->getById($rule->getRuleId());
 
-            // Set number offered product.
             $jplRule->setNumberOfferedProduct($jplRule->getMaximumNumberProduct());
 
-            // Save active jpl rule in session.
             $jplRuleSessionData = $this->checkoutSession->getJplRules();
             $jplRuleSessionData[$rule->getRuleId()] = $rule->getRuleId();
             $this->checkoutSession->setGiftRules($jplRuleSessionData);
@@ -111,7 +106,7 @@ class CustomizableProduct extends AbstractDiscount
                 $jplRule
             );
         }
-
+*/
         return $discountData;
     }
 }
