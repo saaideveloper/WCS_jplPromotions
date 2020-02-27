@@ -26,13 +26,11 @@
             </argument>
         </arguments>
     </type>
-<!-- if we enable this there is an error in the compiler
     <type name="WCS\jplPromotions\Model\Rule\Action\Discount\CustomizableProduct">
         <arguments>
             <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
         </arguments>
     </type>
--->
     <type name="Magento\SalesRule\Model\Rule\Action\Discount\CalculatorFactory">
         <arguments>
             <argument name="discountRules" xsi:type="array">

@@ -6,7 +6,7 @@
  * @copyright Web Cloud Solutions Ltd
  */
 
-namespace WCS\jplPromotions\Model\Action\Discount;
+namespace WCS\jplPromotions\Model\Rule\Action\Discount;
 
 use Magento\Checkout\Model\Session as checkoutSession;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
