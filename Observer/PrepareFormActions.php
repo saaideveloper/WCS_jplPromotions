@@ -54,12 +54,12 @@ class PrepareFormActions implements ObserverInterface
     public function execute(Observer $observer)
     {
 
-        //if ($this->JplRuleHelper->isJplRule($this->getCurrentSalesRule())) {
+        if ($this->JplRuleHelper->isJplRule($this->getCurrentSalesRule())) {
             $form = $observer->getData('form');
             $fieldset = $form->getElement('actions_fieldset');
 
             $fieldset->setData('legend', __('Select jpl products to Apply Discounts:'));
-        //}
+        }
     
     }
 

@@ -57,7 +57,7 @@ class UpdateJplpromotionsRuleActions implements ObserverInterface
     {
         /** @var RuleInterface $rule */
         $rule = $observer->getRule();
-
+/*
         if ($this->jplRuleHelper->isJplRule($rule)) {
             if ($rule->getActions()) {
                 $actions = $rule->getActions()->asArray();
@@ -73,5 +73,6 @@ class UpdateJplpromotionsRuleActions implements ObserverInterface
                 }
             }
         }
+*/
     }
 }
