@@ -5,7 +5,8 @@
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
  */
-namespace WCS\jplPromotions\Model\Rule\Action\Discount;
+
+namespace WCS\jplPromotions\Model\Action\Discount;
 
 use Magento\Checkout\Model\Session as checkoutSession;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -15,9 +16,12 @@ use Magento\SalesRule\Model\Rule\Action\Discount\AbstractDiscount;
 use Magento\SalesRule\Model\Rule\Action\Discount\Data as DiscountData;
 use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
 use Magento\SalesRule\Model\Validator;
+use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
+use WCS\jplPromotions\Helper\Cache as JplRuleCacheHelper;
+use WCS\jplPromotions\Model\JplRule;
 
 /**
- * Class CustomizableProduct
+ * Class CustomizableProduct.php
  *
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
@@ -30,30 +34,36 @@ class CustomizableProduct extends AbstractDiscount
     protected $checkoutSession;
 
     /**
-     * @var GiftRuleCacheHelper
+     * @var JplRuleCacheHelper
      */
-    //protected $giftRuleCacheHelper;
+    protected $jplRuleCacheHelper;
 
     /**
-     * @var GiftRuleRepositoryInterface
+     * @var JplRuleRepositoryInterface
      */
-    //protected $giftRuleRepository;
+    protected $jplRuleRepository;
 
     /**
-     * OfferProduct constructor.
+     * CustomizableProduct constructor.
      *
      * @param Validator                   $validator           Validator
      * @param DataFactory                 $discountDataFactory Discount data factory
      * @param PriceCurrencyInterface      $priceCurrency       Price currency
      * @param checkoutSession             $checkoutSession     Checkout session
+     * @param JplRuleCacheHelper         $jplRuleCacheHelper Jpl rule cache helper
+     * @param JplRuleRepositoryInterface $jplRuleRepository  Jpl rule repository
      */
     public function __construct(
         Validator $validator,
         DataFactory $discountDataFactory,
         PriceCurrencyInterface $priceCurrency,
-        checkoutSession $checkoutSession
+        checkoutSession $checkoutSession,
+        JplRuleCacheHelper $jplRuleCacheHelper,
+        JplRuleRepositoryInterface $jplRuleRepository
     ) {
         $this->checkoutSession = $checkoutSession;
+        $this->jplRuleCacheHelper = $jplRuleCacheHelper;
+        $this->jplRuleRepository = $jplRuleRepository;
 
         parent::__construct(
             $validator,
@@ -68,6 +78,8 @@ class CustomizableProduct extends AbstractDiscount
      * @param float        $qty  Qty
      *
      * @return DiscountData
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function calculate($rule, $item, $qty)
     {
@@ -77,30 +89,29 @@ class CustomizableProduct extends AbstractDiscount
         /** @var \Magento\Quote\Model\Quote $quote */
         $quote = $item->getQuote();
 
-        $calculateId = 'calculate_gift_rule_'.$rule->getRuleId();
+        $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
         if (!$quote->getData($calculateId)) {
             // Set only for performance (not save in DB).
             $quote->setData($calculateId, true);
-/*
-            $giftRule = $this->giftRuleRepository->getById($rule->getRuleId());
 
-            $giftRule->setNumberOfferedProduct($giftRule->getMaximumNumberProduct());
-*/
+            /** @var JplRule $jplRule */
+            $jplRule = $this->jplRuleRepository->getById($rule->getRuleId());
 
-//Getting Data from the session
-            $giftRuleSessionData = $this->checkoutSession->getGiftRules();
-            $giftRuleSessionData[$rule->getRuleId()] = $rule->getRuleId();
-//Setting in the Session gift Rules           
-            $this->checkoutSession->setGiftRules($giftRuleSessionData);
-//saveCacheGiftRule @@@ To Chech What this method Does @@@
-//Helper/Cache.php
-            $this->giftRuleCacheHelper->saveCachedGiftRule(
+            // Set number offered product.
+            $jplRule->setNumberOfferedProduct($jplRule->getMaximumNumberProduct());
+
+            // Save active jpl rule in session.
+            $jplRuleSessionData = $this->checkoutSession->getJplRules();
+            $jplRuleSessionData[$rule->getRuleId()] = $rule->getRuleId();
+            $this->checkoutSession->setGiftRules($jplRuleSessionData);
+
+            $this->jplRuleCacheHelper->saveCachedJplRule(
                 $rule->getRuleId(),
                 $rule,
-                $giftRule
+                $jplRule
             );
         }
-//Returtn $discountData
+
         return $discountData;
     }
 }
