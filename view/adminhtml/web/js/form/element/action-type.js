@@ -52,6 +52,16 @@ define([
                 uiRegistry
                     .get('sales_rule_form.sales_rule_form.actions.price_range')
                     .hide();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_sku')
+                    .hide();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_label_title')
+                    .hide();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_value')
+                    .hide();
+            
             }
         },
 
