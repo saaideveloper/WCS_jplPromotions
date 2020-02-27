@@ -22,6 +22,20 @@
         </arguments>
     </type>
 
+    <type name="WCS\jplPromotions\Model\Rule\Action\Discount\CustomizableProduct">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\SalesRule\Model\Rule\Action\Discount\CalculatorFactory">
+        <arguments>
+            <argument name="discountRules" xsi:type="array">
+                <item name="jpl_discount_product" xsi:type="string">WCS\jplPromotions\Model\Rule\Action\Discount\CustomizableProduct</item>
+            </argument>
+        </arguments>
+    </type>
+
      <!-- Handlers -->
     <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
         <arguments>
