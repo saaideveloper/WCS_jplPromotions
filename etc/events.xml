@@ -6,7 +6,15 @@
     <event name="adminhtml_block_salesrule_actions_prepareform">
         <observer name="wcs_jplpromotions_salesrule_prepareform" instance="WCS\jplPromotions\Observer\PrepareFormActions" />
     </event>
+<!--
     <event name="salesrule_rule_save_before">
         <observer name="wcs_jplpromotions_salesrule_save_rule" instance="WCS\jplPromotions\Observer\UpdateJplpromotionsRuleActions" />
     </event>
+-->
+    <!--TO ADD
+    1) checkout_cart_product_add_after => Observer\SetJplItemPrice.
+    2) salesrule_rule_save_before => Observer\UpdateJplRuleActions
+    3) catalog_product_type_prepare_full_options => Observer\AddJplRuleOption
+    4) sales_quote_collect_totals_after => Observer\CollectJplRule
+    -->
 </config>
