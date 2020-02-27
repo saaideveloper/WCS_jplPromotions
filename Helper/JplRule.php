@@ -15,6 +15,7 @@ use Magento\SalesRule\Model\Rule;
 
 use WCS\jplPromotions\Api\Data\JplRuleInterface;
 //use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
+use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
 
 /**
  * Jpl rule helper *
@@ -29,22 +30,23 @@ class JplRule extends AbstractHelper
     protected $jplRule = [];
 
     /**
-     * @var GiftRuleRepositoryInterface
+     * @var JplRuleRepositoryInterface
      */
-    //protected $giftRuleRepository;
+    protected $jplRuleRepository;
 
     /**
      * GiftRule constructor.
      *
      * @param Context                     $context            Context
+     * @param JplRuleRepositoryInterface  $jplRuleRepository  jplRuleRepository
      * @param array                       $jplRule           Jpl rule
      */
     public function __construct(
         Context $context,
-        //GiftRuleRepositoryInterface $giftRuleRepository,
+        JplRuleRepositoryInterface $jplRuleRepository,
         array $jplRule = []
     ) {
-        //$this->giftRuleRepository = $giftRuleRepository;
+        $this->jplRuleRepository = $jplRuleRepository;
         $this->jplRule = $jplRule;
 
         parent::__construct($context);
@@ -83,14 +85,14 @@ class JplRule extends AbstractHelper
         /**
          * Check if quote has at least one quote item (no gift rule item) in quote
          */
-        /*
+        
         $hasProduct = false;
         foreach ($quote->getAllItems() as $item) {
-            if (!$item->getOptionByCode('option_gift_rule')) {
+            if (!$item->getOptionByCode('option_jpl_rule')) {
                 $hasProduct = true;
                 break;
             }
-        }*/
+        }
         if (!$hasProduct) {
             $valid = false;
         }
