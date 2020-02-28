@@ -62,7 +62,35 @@ define([
                     .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_value')
                     .hide();
             
-            }
+            }else{
+		uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.discount_amount')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.discount_qty')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.discount_step')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.apply_to_shipping')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.maximum_number_product')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.price_range')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_sku')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_label_title')
+                    .show();
+                uiRegistry
+                    .get('sales_rule_form.sales_rule_form.actions.wcs_jplpromotions_cutomizable_value')
+                    .show();
+	    }
         },
 
         /**
