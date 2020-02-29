@@ -12,7 +12,7 @@ use Magento\SalesRule\Model\Rule\Metadata\ValueProvider;
 
 use WCS\jplPromotions\Api\Data\JplRuleInterface;
 use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
-use WCS\jplPromotions\Model\JplRule;
+use WCS\jplPromotions\Model\JplRuleFactory;
 
 /**
  * Add jpl sales rule
@@ -43,7 +43,7 @@ class ValueProviderPlugin
      * @param JplRuleFactory             $jplRuleFactory    Jpl rule factory
      */
     public function __construct(
-        JplRuleRepositoryInterface $jplRuleRepository
+        JplRuleRepositoryInterface $jplRuleRepository,
         JplRuleFactory $jplRuleFactory
     ) {
         $this->jplRuleRepository = $jplRuleRepository;
