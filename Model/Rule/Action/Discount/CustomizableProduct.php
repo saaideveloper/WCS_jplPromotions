@@ -94,7 +94,7 @@ class CustomizableProduct extends AbstractDiscount
 
             $jplRule = $this->jplRuleRepository->getById($rule->getRuleId());
 
-            $jplRule->setNumberOfferedProduct($jplRule->getMaximumNumberProduct());
+            $jplRule->setMaximumNumberProduct($jplRule->getMaximumNumberProduct());
 
             $jplRuleSessionData = $this->checkoutSession->getJplRules();
             $jplRuleSessionData[$rule->getRuleId()] = $rule->getRuleId();
