@@ -107,7 +107,7 @@ class CustomizableProduct extends AbstractDiscount
             );
 
             //Total Discount to the whole Cart;
-            $discountData->setAmount(99);
+            $discountData->setAmount($item->getPriceInclTax());
         }
 
 
