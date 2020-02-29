@@ -78,7 +78,7 @@ class JplRule extends AbstractHelper
      * @return bool
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function isValidRule(Rule $rule, Quote $quote)
+    public function isValidJplRule(Rule $rule, Quote $quote)
     {
         $valid = true;
 
