@@ -112,15 +112,9 @@ class CustomizableProduct extends AbstractDiscount
             $sku = $jplRule->getWcsJplpromotionsSku;
 
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
-
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //BEGIN CHECKING CUSTOMIZBLE OPTIONS
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+/*
 
                 //@TODO Refactor To Move to A helper function
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
                 $customOptions = $options['options'];
@@ -139,17 +133,7 @@ class CustomizableProduct extends AbstractDiscount
                     }
                 }else{
                 }
-                
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                //END IF THE CART ITEM MATCH THE CUSTOM OPTION 
-                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    
-
-
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //END CHECKING CUSTOMIZBLE OPTIONS
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-           
+*/           
         }
 
 
