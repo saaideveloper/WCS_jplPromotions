@@ -115,7 +115,6 @@ class CustomizableProduct extends AbstractDiscount
             //BEGIN CHECKING CUSTOMIZBLE OPTIONS
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-d
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
