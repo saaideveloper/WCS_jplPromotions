@@ -108,11 +108,10 @@ class CustomizableProduct extends AbstractDiscount
 
             //@TODO Refactor To Set it globally
             $optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
-            $optValue = $jplRule->getWcsJplpromotionsCutomizableValue;
-            $sku = $jplRule->getWcsJplpromotionsSku;
+            $optValue = $jplRule->getWcsJplpromotionsCutomizableValue();
+            $sku = $jplRule->getWcsJplpromotionsSku();
 
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
-/*
 
                 //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
@@ -133,7 +132,6 @@ class CustomizableProduct extends AbstractDiscount
                     }
                 }else{
                 }
-*/           
         }
 
 
