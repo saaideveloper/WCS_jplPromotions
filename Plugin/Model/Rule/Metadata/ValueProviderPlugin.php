@@ -10,12 +10,17 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\Rule\Metadata\ValueProvider;
 
+//use Smile\GiftSalesRule\Api\Data\GiftRuleInterface;
 use WCS\jplPromotions\Api\Data\JplRuleInterface;
-use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
-use WCS\jplPromotions\Model\JplRuleFactory;
+//use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
+
+//!!!! IMPORTANT !!!!! THE FOLLOWING LOAD THE MODEL
+//!!!! IMPORTANT !!!!! THE FOLLOWING LOAD THE MODEL
+//!!!! IMPORTANT !!!!! THE FOLLOWING LOAD THE MODEL
+//use Smile\GiftSalesRule\Model\GiftRuleFactory;
 
 /**
- * Add jpl sales rule
+ * Add gift sales rule
  *
  * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
@@ -23,36 +28,36 @@ use WCS\jplPromotions\Model\JplRuleFactory;
 class ValueProviderPlugin
 {
     /**
-     * Jpl rule repository
+     * Gift rule repository
      *
-     * @var JplRuleRepositoryInterface
+     * @var GiftRuleRepositoryInterface
      */
-    protected $jplRuleRepository;
+    //protected $giftRuleRepository;
 
     /**
-     * Jpl rule factory
+     * Gift rule factory
      *
-     * @var JplRuleFactory
+     * @var GiftRuleFactory
      */
-    protected $jplRuleFactory;
+    //protected $giftRuleFactory;
 
     /**
      * UpdateRuleDataObserver constructor.
      *
-     * @param JplRuleRepositoryInterface $jplRuleRepository Jpl rule repository
-     * @param JplRuleFactory             $jplRuleFactory    Jpl rule factory
+     * @param GiftRuleRepositoryInterface $giftRuleRepository Gift rule repository
+     * @param GiftRuleFactory             $giftRuleFactory    Gift rule factory
      */
     public function __construct(
-        JplRuleRepositoryInterface $jplRuleRepository,
-        JplRuleFactory $jplRuleFactory
+        //GiftRuleRepositoryInterface $giftRuleRepository
+        //GiftRuleFactory $giftRuleFactory
     ) {
-        $this->jplRuleRepository = $jplRuleRepository;
-        $this->jplRuleFactory    = $jplRuleFactory;
+        //$this->giftRuleRepository = $giftRuleRepository;
+       // $this->giftRuleFactory    = $giftRuleFactory;
     }
-    
-    
+
+
     /**
-     * Add jpl sales rule label with rule type actions
+     * Add gift sales rule label with rule type actions
      *
      * @param ValueProvider $subject Subject
      * @param array         $result  Result
@@ -89,16 +94,21 @@ class ValueProviderPlugin
             'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::JPL_CUSTOMIZABLE_VALUE],
         ];
 
+        return $result;
+/*
         $result['actions']['children']['simple_action']['arguments']['data']['config']['options'][] = [
             'label' => __('to offer product per price range'),
-            'value' => JplRuleInterface::OFFER_PRODUCT_PER_PRICE_RANGE,
+            'value' => GiftRuleInterface::OFFER_PRODUCT_PER_PRICE_RANGE,
         ];
+*/
 
+
+/*
         $result['actions']['children']['price_range']['arguments']['data']['config'] = [
-            'value' => $extensionAttributes['jpl_rule'][JplRuleInterface::PRICE_RANGE],
+            'value' => $extensionAttributes['gift_rule'][GiftRuleInterface::PRICE_RANGE],
         ];
 
         return $result;
-
+*/
     }
 }
