@@ -85,7 +85,7 @@ class CustomizableProduct extends AbstractDiscount
     {
         /** @var \Magento\SalesRule\Model\Rule\Action\Discount\Data $discountData */
         $discountData = $this->discountFactory->create();
-/*
+
         $quote = $item->getQuote();
 
         $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
@@ -106,7 +106,7 @@ class CustomizableProduct extends AbstractDiscount
                 $jplRule
             );
         }
-*/
+
         return $discountData;
     }
 }
