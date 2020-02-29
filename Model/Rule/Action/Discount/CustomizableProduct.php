@@ -107,7 +107,7 @@ class CustomizableProduct extends AbstractDiscount
             );
         }
 
-        $discountData->setAmount(0);
+        $discountData->setAmount(10);
 
         return $discountData;
     }
