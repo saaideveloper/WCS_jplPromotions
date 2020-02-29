@@ -106,6 +106,48 @@ class CustomizableProduct extends AbstractDiscount
                 $jplRule
             );
 
+            //@TODO To Set it globally
+            $optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
+            $optValue = $jplRule->getWcsJplpromotionsCutomizableValue;
+            $sku = $jplRule->getWcsJplpromotionsSku;
+
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //BEGIN CHECKING CUSTOMIZBLE OPTIONS
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+d
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //BEGIN IF THE CART ITEM MATCH THE CUSTOM OPTION 
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+                $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+                $customOptions = $options['options'];
+                if (!empty($customOptions)) {
+                    foreach ($customOptions as $option) {
+                        $optionTitle = $option['label'];
+                //        $optionId = $option['option_id'];
+                //        $optionType = $option['type'];
+                        $optionValue = $option['value'];
+
+                        if($optionTitle == $optTitle){
+                            
+                            if ($optionValue == $optValue){
+                                return 1;
+                            }
+                        }
+                    }
+                }else{
+                }
+                
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //END IF THE CART ITEM MATCH THE CUSTOM OPTION 
+                //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    
+
+
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //END CHECKING CUSTOMIZBLE OPTIONS
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
             //Total Discount to the whole Cart;
             $discountData->setAmount($item->getPriceInclTax());
         }
