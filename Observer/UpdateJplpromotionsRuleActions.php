@@ -25,7 +25,7 @@ class UpdateJplpromotionsRuleActions implements ObserverInterface
     const QUOTE_ATTRIBUTE = 'quote_';
 
     /**
-     * @var GiftRuleHelper
+     * @var JplRuleHelper
      */
     protected $jplRuleHelper;
 
@@ -35,7 +35,7 @@ class UpdateJplpromotionsRuleActions implements ObserverInterface
     protected $serializer;
 
     /**
-     * UpdateGiftRuleActions constructor.
+     * UpdateJplRuleActions constructor.
      *
      * @param JplRuleHelper $jplRuleHelper Jpl promotions rule helper
      * @param serializer     $serializer     Serializer
@@ -57,14 +57,14 @@ class UpdateJplpromotionsRuleActions implements ObserverInterface
     {
         /** @var RuleInterface $rule */
         $rule = $observer->getRule();
-/*
+
         if ($this->jplRuleHelper->isJplRule($rule)) {
             if ($rule->getActions()) {
                 $actions = $rule->getActions()->asArray();
                 if (isset($actions['conditions'])) {
                     foreach ($actions['conditions'] as $index => $condition) {
                         if (strpos($condition['attribute'], self::QUOTE_ATTRIBUTE) !== false) {
-                            // Remove quote condition for gift rule.
+                            // Remove quote condition for jpl rule.
                             unset($actions['conditions'][$index]);
                         }
                     }
@@ -73,6 +73,6 @@ class UpdateJplpromotionsRuleActions implements ObserverInterface
                 }
             }
         }
-*/
+
     }
 }
