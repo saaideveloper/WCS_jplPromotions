@@ -105,9 +105,11 @@ class CustomizableProduct extends AbstractDiscount
                 $rule,
                 $jplRule
             );
+
+            //Total Discount to the whole Cart;
+            $discountData->setAmount(9999);
         }
 
-        $discountData->setAmount(10);
 
         return $discountData;
     }
