@@ -132,7 +132,7 @@
                     <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
                 </validation>
                 <dataType>text</dataType>
-                <label translate="true">Jpl Customizable option Label from product</label>
+                <label translate="true">Jpl Customizable option Label Title from product</label>
                 <dataScope>extension_attributes.jpl_rule.wcs_jplpromotions_cutomizable_label_title</dataScope>
                 <visible>true</visible>
             </settings>
@@ -154,7 +154,7 @@
                     <!--<rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>-->
                 </validation>
                 <dataType>text</dataType>
-                <label translate="true">Jpl Customizable option Title from product</label>
+                <label translate="true">Jpl Customizable Value from product</label>
                 <dataScope>extension_attributes.jpl_rule.wcs_jplpromotions_cutomizable_value</dataScope>
                 <visible>true</visible>
             </settings>
