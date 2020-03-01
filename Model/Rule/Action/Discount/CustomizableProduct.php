@@ -100,7 +100,20 @@ class CustomizableProduct extends AbstractDiscount
         $baseItemOriginalPrice = $this->validator->getItemBaseOriginalPrice($item);
 
 	    $x = $rule->getDiscountStep();
-	    $y = $rule->getDiscountAmount();
+        $y = $rule->getDiscountAmount();
+        
+        if (!$x || $y > $x) {
+            return $discountData;
+        }
+        $buyAndDiscountQty = $x + $y;
+
+        $fullRuleQtyPeriod = floor($qty / $buyAndDiscountQty);
+        $freeQty = $qty - $fullRuleQtyPeriod * $buyAndDiscountQty;
+
+        $discountQty = $fullRuleQtyPeriod * $y;
+        if ($freeQty > $x) {
+            $discountQty += $freeQty - $x;
+        }
 
         $quote = $item->getQuote();
 
