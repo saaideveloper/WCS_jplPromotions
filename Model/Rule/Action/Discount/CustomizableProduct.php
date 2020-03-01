@@ -49,6 +49,21 @@ class CustomizableProduct extends AbstractDiscount
     protected $jplRuleModel;
 
     /**
+     * @var WcsJplpromotionsCutomizableLabelTitle
+     */
+    protected $wcsJplpromotionsCutomizableLabelTitle;
+
+    /**
+     * @var WcsJplpromotionsCutomizableValue
+     */
+    protected $wcsJplpromotionsCutomizableValue;
+
+    /**
+     * @var WcsJplpromotionsSku
+     */
+    protected $wcsJplpromotionsSku;
+
+    /**
      * CustomizableProduct constructor.
      *
      * @param Validator                   $validator           Validator
@@ -72,6 +87,11 @@ class CustomizableProduct extends AbstractDiscount
         $this->jplRuleCacheHelper = $jplRuleCacheHelper;
         $this->jplRuleRepository = $jplRuleRepository;
         $this->jplRuleModel = $jplRuleModel;
+
+        $this->wcsJplpromotionsCutomizableLabelTitle = $this->jplRuleModel->getWcsJplpromotionsCutomizableLabelTitle();
+        $this->wcsJplpromotionsCutomizableValue = $this->jplRuleModel->getWcsJplpromotionsCutomizableValue();
+        $this->wcsJplpromotionsSku = $this->jplRuleModel->getWcsJplpromotionsSku();
+
 
         parent::__construct(
             $validator,
@@ -115,9 +135,9 @@ class CustomizableProduct extends AbstractDiscount
             );
 
             //@TODO Refactor To Set it globally
-            $optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
-            $optValue = $jplRule->getWcsJplpromotionsCutomizableValue();
-            $sku = $jplRule->getWcsJplpromotionsSku();
+            //$optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
+            //$optValue = $jplRule->getWcsJplpromotionsCutomizableValue();
+            //$sku = $jplRule->getWcsJplpromotionsSku();
 
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
 
@@ -130,9 +150,9 @@ class CustomizableProduct extends AbstractDiscount
                         $optionTitle = $option['label'];
                         $optionValue = $option['value'];
 
-                        if($optionTitle == $optTitle){
+                        if($optionTitle == $this->wcsJplpromotionsCutomizableLabelTitle)
                             
-                            if ($optionValue == $optValue){
+                            if ($optionValue == $this->wcsJplpromotionsCutomizableValue){
                                  //Total Discount to the whole Cart;
                                  $discountData->setAmount($discount);
                             }
