@@ -115,9 +115,9 @@ class CustomizableProduct extends AbstractDiscount
             );
 
             //@TODO Refactor To Set it globally
-            $optTitle = $this->jplRuleModel->getWcsJplpromotionsCutomizableLabelTitle();
-            $optValue = $this->jplRuleModel->getWcsJplpromotionsCutomizableValue();
-            $sku = $this->jplRuleModel->getWcsJplpromotionsSku();
+            $optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
+            $optValue = $jplRule->getWcsJplpromotionsCutomizableValue();
+            $sku = $jplRule->getWcsJplpromotionsSku();
 
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
 
@@ -130,9 +130,9 @@ class CustomizableProduct extends AbstractDiscount
                         $optionTitle = $option['label'];
                         $optionValue = $option['value'];
 
-                        if($optionTitle == $optTitle){
+                        if($optionTitle == $optValue){
                             
-                            if ($optionValue == $optValue){
+                            if ($optionValue == $optTitle){
                                  //Total Discount to the whole Cart;
                                  $discountData->setAmount($discount);
                             }
