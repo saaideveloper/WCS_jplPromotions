@@ -18,7 +18,7 @@ use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
 use Magento\SalesRule\Model\Validator;
 use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
 use WCS\jplPromotions\Helper\Cache as JplRuleCacheHelper;
-use WCS\jplPromotions\Model\JplRule;
+use WCS\jplPromotions\Model\JplRule as JplRuleModel;
 
 /**
  * Class CustomizableProduct.php
@@ -44,6 +44,11 @@ class CustomizableProduct extends AbstractDiscount
     protected $jplRuleRepository;
 
     /**
+     * @var JplRuleModel
+     */
+    protected $jplRuleModel;
+
+    /**
      * CustomizableProduct constructor.
      *
      * @param Validator                   $validator           Validator
@@ -52,6 +57,7 @@ class CustomizableProduct extends AbstractDiscount
      * @param checkoutSession             $checkoutSession     Checkout session
      * @param JplRuleCacheHelper         $jplRuleCacheHelper Jpl rule cache helper
      * @param JplRuleRepositoryInterface $jplRuleRepository  Jpl rule repository
+     * @param JplRuleModel                $jplRuleModel         Jpl rule Model
      */
     public function __construct(
         Validator $validator,
@@ -59,11 +65,13 @@ class CustomizableProduct extends AbstractDiscount
         PriceCurrencyInterface $priceCurrency,
         checkoutSession $checkoutSession,
         JplRuleCacheHelper $jplRuleCacheHelper,
-        JplRuleRepositoryInterface $jplRuleRepository
+        JplRuleRepositoryInterface $jplRuleRepository,
+        JplRuleModel $jplRuleModel
     ) {
         $this->checkoutSession = $checkoutSession;
         $this->jplRuleCacheHelper = $jplRuleCacheHelper;
         $this->jplRuleRepository = $jplRuleRepository;
+        $this->jplRuleModel = $jplRuleModel;
 
         parent::__construct(
             $validator,
