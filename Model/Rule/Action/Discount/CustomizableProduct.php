@@ -115,6 +115,9 @@ class CustomizableProduct extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
+$discountData->setAmount($discountQty * $itemPrice);
+return $discountData;
+
         $quote = $item->getQuote();
 
         $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
