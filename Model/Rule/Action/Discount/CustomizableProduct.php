@@ -130,9 +130,9 @@ class CustomizableProduct extends AbstractDiscount
                         $optionTitle = $option['label'];
                         $optionValue = $option['value'];
 
-                        if($optionTitle == $optValue){
+                        if($optionTitle == $optTitle){
                             
-                            if ($optionValue == $optTitle){
+                            if ($optionValue == $optValue){
                                  //Total Discount to the whole Cart;
                                  $discountData->setAmount($discount);
                             }
