@@ -92,7 +92,12 @@ class CustomizableProduct extends AbstractDiscount
     public function calculate($rule, $item, $qty)
     {
         /** @var \Magento\SalesRule\Model\Rule\Action\Discount\Data $discountData */
-	    $discountData = $this->discountFactory->create();
+        $discountData = $this->discountFactory->create();
+        
+        $itemPrice = $this->validator->getItemPrice($item);
+        $baseItemPrice = $this->validator->getItemBasePrice($item);
+        $itemOriginalPrice = $this->validator->getItemOriginalPrice($item);
+        $baseItemOriginalPrice = $this->validator->getItemBaseOriginalPrice($item);
 
 	    $x = $rule->getDiscountStep();
 	    $y = $rule->getDiscountAmount();
