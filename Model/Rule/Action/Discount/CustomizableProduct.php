@@ -155,7 +155,11 @@ class CustomizableProduct extends AbstractDiscount
                             
                             if ($optionValue == $optValue){
                                  //Total Discount to the whole Cart;
-                                 $discountData->setAmount($discount);
+                                 //$discountData->setAmount($discount);
+                                 $discountData->setAmount($discountQty * $itemPrice);
+                                 $discountData->setBaseAmount($discountQty * $baseItemPrice);
+                                 $discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
+                                 $discountData->setBaseOriginalAmount($discountQty * $baseItemOriginalPrice);
                             }
                         }
                     }
