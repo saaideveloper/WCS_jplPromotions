@@ -115,8 +115,6 @@ class CustomizableProduct extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
-$discountData->setAmount($discountQty * $itemPrice);
-return $discountData;
 
         $quote = $item->getQuote();
 
@@ -167,8 +165,12 @@ return $discountData;
                         }
                     }
                 }else{
+			$discountData->setAmount(0.50);
                 }
-        }
+        }else{
+		//Discount for items that not follow the cart rule
+		$discountData->setAmount(3);
+	}
 
 
         return $discountData;
