@@ -157,19 +157,43 @@ class CustomizableProduct extends AbstractDiscount
                             if ($optionValue == $optValue){
                                  //Total Discount to the whole Cart;
                                  //$discountData->setAmount($discount);
-                                 $discountData->setAmount($discountQty * $itemPrice);
-                                 $discountData->setBaseAmount($discountQty * $baseItemPrice);
-                                 $discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
-                                 $discountData->setBaseOriginalAmount($discountQty * $baseItemOriginalPrice);
+				   $discountData->setAmount($qty);
+                                 //$discountData->setAmount($discountQty * $itemPrice);
+                                 //$discountData->setBaseAmount($discountQty * $baseItemPrice);
+                                 //$discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
+                                 //$discountData->setBaseOriginalAmount($discountQty * $baseItemOriginalPrice);
                             }
                         }
                     }
                 }else{
-			$discountData->setAmount(0.50);
+			//$discountData->setAmount(0.50);
                 }
         }else{
 		//Discount for items that not follow the cart rule
-		$discountData->setAmount(3);
+		//$discountData->setAmount(3);
+
+		//@TODO Refactor To Move to A helper function
+                $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+
+                $customOptions = $options['options'];
+                if (!empty($customOptions)) {
+                    foreach ($customOptions as $option) {
+                        $optionTitle = $option['label'];
+                        $optionValue = $option['value'];
+
+                        if($optionTitle == 'Material'){
+
+                            if ($optionValue == '2mm'){
+                                 //Total Discount to the whole Cart;
+                                 //$discountData->setAmount(10);
+				 $discountData->setAmount($qty);
+
+                            }
+                        }
+                    }
+                }else{
+                }
+
 	}
 
 
