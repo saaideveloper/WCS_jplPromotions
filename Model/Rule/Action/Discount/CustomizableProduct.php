@@ -19,7 +19,7 @@ use Magento\SalesRule\Model\Validator;
 use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
 use WCS\jplPromotions\Helper\Cache as JplRuleCacheHelper;
 use WCS\jplPromotions\Model\JplRule as JplRuleModel;
-use WCS\jplPromotions\Model\Rule\Action\Discount\JplData as JplData;
+use WCS\jplPromotions\Model\Rule\Action\Discount\JplData;
 
 /**
  * Class CustomizableProduct.php
@@ -102,6 +102,8 @@ class CustomizableProduct extends AbstractDiscount
     {
         /** @var \Magento\SalesRule\Model\Rule\Action\Discount\Data $discountData */
         $discountData = $this->discountFactory->create();
+
+        $jplData = new JplData;
         
         $itemPrice = $this->validator->getItemPrice($item);
         $baseItemPrice = $this->validator->getItemBasePrice($item);
