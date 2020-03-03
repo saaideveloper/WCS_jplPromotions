@@ -208,10 +208,12 @@ class CustomizableProduct extends AbstractDiscount
                 }
 
 	    }
-
+//If the individual row has more than 21
 if($jplData->gettotalQty() > 20){
-    $discountData->setAmount($jplData->gettotalQty());
+    //$discountData->setAmount($jplData->gettotalQty());
 }
+
+$discountData->setAmount($jplData->gettotalQty());
         return $discountData;
     }
 
