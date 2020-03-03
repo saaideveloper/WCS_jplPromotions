@@ -29,6 +29,14 @@ use WCS\jplPromotions\Model\JplRule as JplRuleModel;
 class CustomizableProduct extends AbstractDiscount
 {
     /**
+     * This is total qty of the products in the cart that match the rule
+     *
+     * @var int
+     */
+
+     protected $TotalQtyJpl;
+
+    /**
      * @var checkoutSession
      */
     protected $checkoutSession;
@@ -194,9 +202,29 @@ class CustomizableProduct extends AbstractDiscount
                 }else{
                 }
 
-	}
+	    }
 
 
         return $discountData;
+    }
+
+    /**
+     * Get Total Qty
+     * @return int
+     */
+    public function getTotalQtyJpl(){
+        return $this->TotalQtyJpl;
+    }
+
+     /**
+      * Set Total Qty
+      * 
+      * @param int $TotalQtyJpl
+      * @return $this
+      */
+
+    public function setTotalQtyJpl($TotalQtyJpl){
+        $this->TotalQtyJpl = $TotalQtyJpl;
+        return $this;
     }
 }
