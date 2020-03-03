@@ -168,7 +168,8 @@ class CustomizableProduct extends AbstractDiscount
                             if ($optionValue == $optValue){
                                  //Total Discount to the whole Cart;
                                  //$discountData->setAmount($discount);
-				   $discountData->setAmount($qty);
+                   $discountData->setAmount($qty);
+                   $jplData->settotalQty($qty);
                                  //$discountData->setAmount($discountQty * $itemPrice);
                                  //$discountData->setBaseAmount($discountQty * $baseItemPrice);
                                  //$discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
@@ -197,7 +198,8 @@ class CustomizableProduct extends AbstractDiscount
                             if ($optionValue == '2mm'){
                                  //Total Discount to the whole Cart;
                                  //$discountData->setAmount(10);
-				 $discountData->setAmount($qty);
+                 $discountData->setAmount($qty);
+                 $jplData->settotalQty($qty);
 
                             }
                         }
