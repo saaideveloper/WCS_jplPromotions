@@ -19,6 +19,7 @@ use Magento\SalesRule\Model\Validator;
 use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
 use WCS\jplPromotions\Helper\Cache as JplRuleCacheHelper;
 use WCS\jplPromotions\Model\JplRule as JplRuleModel;
+use WCS\jplPromotions\Model\Rule\Action\Discount\JplData as JplData;
 
 /**
  * Class CustomizableProduct.php
