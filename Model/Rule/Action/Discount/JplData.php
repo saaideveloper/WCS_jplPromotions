@@ -21,7 +21,7 @@ class JplData {
      */
     public function __construct()
     {
-        $this->settotalQty(0);
+        //$this->settotalQty(0);
     }
 
     /**
