@@ -32,7 +32,7 @@ class JplData {
      */
     public function settotalQty($totalQty)
     {
-        $this->totalQty = $totalQty;
+        $this->totalQty = $this->totalQty + $totalQty;
         return $this;
     }
 
