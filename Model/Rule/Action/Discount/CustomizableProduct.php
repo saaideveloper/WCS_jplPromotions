@@ -210,7 +210,7 @@ class CustomizableProduct extends AbstractDiscount
 	    }
 
 if($jplData->gettotalQty() > 20){
-    $discountData->setAmount($qty);
+    $discountData->setAmount($jplData->gettotalQty());
 }
         return $discountData;
     }
