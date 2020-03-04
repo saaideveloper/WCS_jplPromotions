@@ -103,6 +103,15 @@ class CustomizableProduct extends AbstractDiscount
         $itemOriginalPrice = $this->validator->getItemOriginalPrice($item);
         $baseItemOriginalPrice = $this->validator->getItemBaseOriginalPrice($item);
 
+        
+        
+        //@TODO Refactor To Set it globally
+        $jplRule = $this->jplRuleRepository->getById($rule->getRuleId());
+
+        $optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
+        $optValue = $jplRule->getWcsJplpromotionsCutomizableValue();
+        $sku = $jplRule->getWcsJplpromotionsSku();
+
 	    $x = $rule->getDiscountStep();
         $y = $rule->getDiscountAmount();
         
@@ -126,8 +135,7 @@ class CustomizableProduct extends AbstractDiscount
         if (!$quote->getData($calculateId)) {
             $quote->setData($calculateId, true);
 
-            $jplRule = $this->jplRuleRepository->getById($rule->getRuleId());
-
+            
             $jplRule->setMaximumNumberProduct($jplRule->getMaximumNumberProduct());
 
             $jplRuleSessionData = $this->checkoutSession->getJplRules();
@@ -140,10 +148,7 @@ class CustomizableProduct extends AbstractDiscount
                 $jplRule
             );
 
-            //@TODO Refactor To Set it globally
-            $optTitle = $jplRule->getWcsJplpromotionsCutomizableLabelTitle();
-            $optValue = $jplRule->getWcsJplpromotionsCutomizableValue();
-            $sku = $jplRule->getWcsJplpromotionsSku();
+            
 
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
 
@@ -186,9 +191,9 @@ class CustomizableProduct extends AbstractDiscount
                         $optionTitle = $option['label'];
                         $optionValue = $option['value'];
 
-                        if($optionTitle == 'Material'){
+                        if($optionTitle == $optTitle){
 
-                            if ($optionValue == '2mm'){
+                            if ($optionValue == $optValue){
                                  //Total Discount to the whole Cart;
                                  //$discountData->setAmount(10);
                  //$discountData->setAmount($qty);
