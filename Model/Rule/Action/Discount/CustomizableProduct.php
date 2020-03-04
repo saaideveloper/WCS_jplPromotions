@@ -215,20 +215,24 @@ class CustomizableProduct extends AbstractDiscount
 if($jplData->gettotalQty() > 20){
     $discountData->setAmount(3.50);
 }else{
-    $totalInCart = 0;
-    foreach($quote->getAllVisibleItems() as $_item) {
-        //echo 'Sku: '.$_item->getSku().'<br/>';
-        //echo 'Quantity: '.$_item->getQty().'<br/>';
-        if ($_item->getSku() == $sku ){
-    	$totalInCart = $totalInCart + $_item->getQty();
-        }
-    }
-    If($item->getProduct()->getSku() == $sku){
-    	if($totalInCart > $x){
-            $discountData->setAmount($jplData->gettotalQty());
-    	}
+$totalInCart = 0;
+$regex='/\b'.$optValue.'\b/';
+foreach($quote->getAllVisibleItems() as $_item) {
+    //echo 'Sku: '.$_item->getSku().'<br/>';
+    //echo 'Quantity: '.$_item->getQty().'<br/>';
+    //if ($_item->getSku() == $sku ){
+if(preg_match($regex, $_item->getSku() )){
+        $totalInCart = $totalInCart + $_item->getQty();
     }
 }
+    //If($item->getProduct()->getSku() == $sku){
+if(preg_match($regex, $item->getProduct()->getSku() )){
+        if($totalInCart > $x){
+        $discountData->setAmount($jplData->gettotalQty());
+        }
+    }
+}
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //END TO MOVE TO JPLData
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
