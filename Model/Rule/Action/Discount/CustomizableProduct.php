@@ -210,7 +210,9 @@ class CustomizableProduct extends AbstractDiscount
 if($jplData->gettotalQty() > 20){
     $discountData->setAmount(3.50);
 }else{
-    $discountData->setAmount($jplData->gettotalQty());
+    If($item->getProduct()->getSku() == $sku){
+        $discountData->setAmount($jplData->gettotalQty());
+    }
 }
         return $discountData;
     }
