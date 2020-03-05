@@ -97,6 +97,10 @@ class CustomizableProduct extends AbstractDiscount
         $discountData = $this->discountFactory->create();
 
         $jplData = new JplData;
+
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //BEGIN VARIABLES
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         
         $itemPrice = $this->validator->getItemPrice($item);
         $baseItemPrice = $this->validator->getItemBasePrice($item);
@@ -128,6 +132,9 @@ class CustomizableProduct extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //END VARIABLES
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         $quote = $item->getQuote();
 
@@ -152,6 +159,9 @@ class CustomizableProduct extends AbstractDiscount
 
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
 
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //BEGIN to move to a function in a Helper getOptionsByProduct()
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
@@ -178,11 +188,17 @@ class CustomizableProduct extends AbstractDiscount
                 }else{
 			//$discountData->setAmount(0.50);
                 }
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //END to move to a function in a Helper getOptionsByProduct()
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         }else{
 		//Discount for items that not follow the cart rule
 		//$discountData->setAmount(3);
 
-		//@TODO Refactor To Move to A helper function
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //BEGIN to move to a function in a Helper getOptionsByProduct()
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
+                //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
                 $customOptions = $options['options'];
@@ -204,37 +220,46 @@ class CustomizableProduct extends AbstractDiscount
                     }
                 }else{
                 }
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //END to move to a function in a Helper getOptionsByProduct()
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         }
         
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//BEGIN TO MOVE TO JPLData
+//BEGIN TO MOVE TO JPLData to a function applyDiscount()
 //variables $quote , $sku , $item , $x
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //If the individual row has more than 21
 if($jplData->gettotalQty() > 20){
     $discountData->setAmount(3.50);
 }else{
-$totalInCart = 0;
-$regex='/\b'.$optValue.'\b/';
-foreach($quote->getAllVisibleItems() as $_item) {
-    //echo 'Sku: '.$_item->getSku().'<br/>';
-    //echo 'Quantity: '.$_item->getQty().'<br/>';
-    //if ($_item->getSku() == $sku ){
-if(preg_match($regex, $_item->getSku() )){
-        $totalInCart = $totalInCart + $_item->getQty();
+    $totalInCart = 0;
+    $regex='/\b'.$optValue.'\b/';
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    //BEGIN TO MOVE TO A FUNCTION IN HELPER totalInCartByProduct($quote->getAllVisibleItems)
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    foreach($quote->getAllVisibleItems() as $_item) {
+        //echo 'Sku: '.$_item->getSku().'<br/>';
+        //echo 'Quantity: '.$_item->getQty().'<br/>';
+        //if ($_item->getSku() == $sku ){
+        if(preg_match($regex, $_item->getSku() )){
+            $totalInCart = $totalInCart + $_item->getQty();
+        }
     }
-}
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    //END TO MOVE TO A FUNCTION IN HELPER totalInCartByProduct($quote->getAllVisibleItems)
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //If($item->getProduct()->getSku() == $sku){
-if(preg_match($regex, $item->getProduct()->getSku() )){
+    if(preg_match($regex, $item->getProduct()->getSku() )){
         if($totalInCart > $x){
-        $discountData->setAmount($jplData->gettotalQty());
+            $discountData->setAmount($jplData->gettotalQty());
         }
     }
 }
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//END TO MOVE TO JPLData
+//END TO MOVE TO JPLData applyDiscount()
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         return $discountData;
     }
