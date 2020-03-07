@@ -67,7 +67,7 @@
  <type name="Magento\Framework\Model\Entity\RepositoryFactory">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="WCS\jplPromotions\Api\Data\GiftRuleRepository" xsi:type="string">Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface</item>
+                <item name="WCS\jplPromotions\Api\Data\GiftRuleRepository" xsi:type="string">WCS\jplPromotions\Api\JplRuleRepositoryInterface</item>
             </argument>
         </arguments>
     </type>
