@@ -13,7 +13,7 @@ use WCS\jplPromotions\Api\Data\JplRuleDataInterface;
 /**
  * JplRuleData model.
  *
- * @author    Pierre Le Maguer <pilem@smile.fr>
+ * @author    Sergio Abad <saaideveloper@gmail.com>
  * @copyright Web Cloud Solutions Ltd
  * @SuppressWarnings(PHPMD.CamelCasePropertyName)
  */
