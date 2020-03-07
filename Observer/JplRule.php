@@ -12,14 +12,12 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Quote\Model\Quote;
 use Magento\SalesRule\Model\Rule;
-//use Smile\GiftSalesRule\Api\Data\GiftRuleInterface;
-//use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
 
 /**
- * Gift rule helper
+ * Jpl rule helper
  *
- * @author    Maxime Queneau <maxime.queneau@smile.fr>
- * @copyright 2019 Smile
+ * @author    Sergio Abad <saaideveloper@gmail.com>
+ * @copyright Web Cloud Solutions Ltd
  */
 class JplRule extends AbstractHelper
 {
@@ -28,23 +26,17 @@ class JplRule extends AbstractHelper
      */
     protected $jplRule = [];
 
-    /**
-     * @var GiftRuleRepositoryInterface
-     */
-    //protected $giftRuleRepository;
 
     /**
-     * GiftRule constructor.
+     * JplRule constructor.
      *
      * @param Context                     $context            Context
      * @param array                       $jplRule           Jpl rule
      */
     public function __construct(
         Context $context,
-        //GiftRuleRepositoryInterface $giftRuleRepository,
         array $jplRule = []
     ) {
-        //$this->giftRuleRepository = $giftRuleRepository;
         $this->jplRule = $jplRule;
 
         parent::__construct($context);
