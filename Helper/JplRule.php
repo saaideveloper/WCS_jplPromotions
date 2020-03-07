@@ -14,7 +14,6 @@ use Magento\Quote\Model\Quote;
 use Magento\SalesRule\Model\Rule;
 
 use WCS\jplPromotions\Api\Data\JplRuleInterface;
-//use Smile\GiftSalesRule\Api\GiftRuleRepositoryInterface;
 use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
 
 /**
