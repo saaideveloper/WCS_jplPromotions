@@ -25,16 +25,6 @@ class JplRule extends AbstractModel implements JplRuleInterface, IdentityInterfa
     /**
      * @var string
      */
-    protected $_eventPrefix = 'smile_gift_sales_rule_gift_rule';
-
-    /**
-     * @var string
-     */
-    protected $_eventObject = 'smile_gift_sales_rule_gift_rule';
-
-    /**
-     * @var string
-     */
     protected $_cacheTag = self::CACHE_TAG;
 
     /**
