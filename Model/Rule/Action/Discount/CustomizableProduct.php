@@ -198,7 +198,8 @@ class CustomizableProduct extends AbstractDiscount
             //END to move to a function in a Helper checkIfMatchCustomOptions()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         }else{
-		//Discount for items that not follow the cart rule
+        //@TODO TO CHECK WHY ONLY if (!$quote->getData($calculateId)) { ONLY APPLY FOR THE FIRST ITEM
+        //Discount for items that not follow the cart rule
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
              //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
@@ -208,7 +209,7 @@ class CustomizableProduct extends AbstractDiscount
             //  3. $optionValue
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
                 //@TODO Refactor To Move to A helper function
-                /*
+
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
                 $customOptions = $options['options'];
@@ -225,7 +226,7 @@ class CustomizableProduct extends AbstractDiscount
                         }
                     }
                 }else{
-                }*/
+                }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //END to move to a function in a Helper checkIfMatchCustomOptions()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
