@@ -203,6 +203,7 @@ if($jplData->gettotalQty() < 0){
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //BEGIN TO MOVE TO A FUNCTION IN HELPER totalInCartByProduct($quote->getAllVisibleItems)
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    /*
     foreach($quote->getAllVisibleItems() as $_item) {
         //echo 'Sku: '.$_item->getSku().'<br/>';
         //echo 'Quantity: '.$_item->getQty().'<br/>';
@@ -210,13 +211,14 @@ if($jplData->gettotalQty() < 0){
         if(preg_match($regex, $_item->getSku() )){
             $totalInCart = $totalInCart + $_item->getQty();
         }
-    }
+    }*/
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //END TO MOVE TO A FUNCTION IN HELPER totalInCartByProduct($quote->getAllVisibleItems)
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //If($item->getProduct()->getSku() == $sku){
     if(preg_match($regex, $item->getProduct()->getSku() )){
-        if($totalInCart > $x){
+        //if($totalInCart > $x){
+        if($this->getTotalInCart() > $x){
             $discountData->setAmount($jplData->gettotalQty());
         }
     }
