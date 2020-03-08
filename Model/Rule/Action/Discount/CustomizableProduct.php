@@ -189,26 +189,18 @@ class CustomizableProduct extends AbstractDiscount
                         if($optionTitle == $optTitle){
                             
                             if ($optionValue == $optValue){
-                                 //Total Discount to the whole Cart;
-                                 //$discountData->setAmount($discount);
-                                 //$discountData->setAmount($qty);
+                                 //Setting Total Qty based on optTitle And optValue to the whole Cart;
                                  $jplData->settotalQty($qty);
-                                 //$discountData->setAmount($discountQty * $itemPrice);
-                                 //$discountData->setBaseAmount($discountQty * $baseItemPrice);
-                                 //$discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
-                                 //$discountData->setBaseOriginalAmount($discountQty * $baseItemOriginalPrice);
                             }
                         }
                     }
                 }else{
-			//$discountData->setAmount(0.50);
                 }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //END to move to a function in a Helper setTotalQty()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         }else{
 		//Discount for items that not follow the cart rule
-		//$discountData->setAmount(3);
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //BEGIN to move to a function in a Helper setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData)
@@ -231,11 +223,7 @@ class CustomizableProduct extends AbstractDiscount
                         if($optionTitle == $optTitle){
 
                             if ($optionValue == $optValue){
-                                 //Total Discount to the whole Cart;
-                                 //$discountData->setAmount(10);
-                                 //$discountData->setAmount($qty);
                                  $jplData->settotalQty($qty);
-
                             }
                         }
                     }
