@@ -193,7 +193,7 @@ class CustomizableProduct extends AbstractDiscount
         //@TODO TO CHECK WHY ONLY if (!$quote->getData($calculateId)) { ONLY APPLY FOR THE FIRST ITEM
         //Discount for items that not follow the cart rule
 
-            if(!$addQty){
+            if($addQty){
                 $jplData->settotalQty($qty);
             }
 
