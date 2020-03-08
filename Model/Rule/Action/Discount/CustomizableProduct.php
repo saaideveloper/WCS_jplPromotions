@@ -210,6 +210,7 @@ class CustomizableProduct extends AbstractDiscount
             //  3. $optionValue
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //@TODO Refactor To Move to A helper function
+/*
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
                 $customOptions = $options['options'];
@@ -230,6 +231,10 @@ class CustomizableProduct extends AbstractDiscount
                     }
                 }else{
                 }
+*/
+                if($addQty){
+                    $jplData->settotalQty($qty);
+                 }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //END to move to a function in a Helper checkIfMatchCustomOptions()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -245,7 +250,7 @@ class CustomizableProduct extends AbstractDiscount
             //  3. $optionValue
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
                 //@TODO Refactor To Move to A helper function
-
+/*
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
                 $customOptions = $options['options'];
@@ -265,6 +270,10 @@ class CustomizableProduct extends AbstractDiscount
                     }
                 }else{
                 }
+*/
+                if($addQty){
+                    $jplData->settotalQty($qty);
+                 }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             //END to move to a function in a Helper checkIfMatchCustomOptions()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
