@@ -169,12 +169,13 @@ class CustomizableProduct extends AbstractDiscount
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //BEGIN to move to a function in a Helper setTotalQty($product,$optionTitle,$optionValue,$qty)
+            //BEGIN to move to a function in a Helper setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData)
             //Arguments
-            //  1. $item->getProduct()
+            //  1. $item
             //  2. $optionTitle
             //  3. $optionValue
             //  4. $qty
+            //  5. $jplData
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
@@ -210,12 +211,13 @@ class CustomizableProduct extends AbstractDiscount
 		//$discountData->setAmount(3);
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //BEGIN to move to a function in a Helper setTotalQty($product,$optionTitle,$optionValue,$qty)
+            //BEGIN to move to a function in a Helper setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData)
             //Arguments
-            //  1. $item->getProduct()
+            //  1. $item
             //  2. $optionTitle
             //  3. $optionValue
             //  4. $qty
+            //  5. $jplData
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
                 //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
