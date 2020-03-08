@@ -169,13 +169,11 @@ class CustomizableProduct extends AbstractDiscount
             $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //BEGIN to move to a function in a Helper setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData)
+            //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
             //Arguments
             //  1. $item
             //  2. $optionTitle
             //  3. $optionValue
-            //  4. $qty
-            //  5. $jplData
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
@@ -197,19 +195,17 @@ class CustomizableProduct extends AbstractDiscount
                 }else{
                 }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //END to move to a function in a Helper setTotalQty()
+            //END to move to a function in a Helper checkIfMatchCustomOptions()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         }else{
 		//Discount for items that not follow the cart rule
 
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //BEGIN to move to a function in a Helper setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData)
+             //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
             //Arguments
             //  1. $item
             //  2. $optionTitle
             //  3. $optionValue
-            //  4. $qty
-            //  5. $jplData
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
                 //@TODO Refactor To Move to A helper function
                 $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
@@ -230,7 +226,7 @@ class CustomizableProduct extends AbstractDiscount
                 }else{
                 }
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //END to move to a function in a Helper setTotalQty()
+            //END to move to a function in a Helper checkIfMatchCustomOptions()
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         }
