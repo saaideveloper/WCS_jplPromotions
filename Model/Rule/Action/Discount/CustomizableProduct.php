@@ -228,4 +228,27 @@ if($jplData->gettotalQty() < 0){
         return $discountData;
     }
 
+    /**
+     * Function getTotalInCart()
+     * 
+     * @param Quote $quote
+     * @param Regex $regex
+     * @param Sku $sku
+     * 
+     * return int
+     */
+    public function getTotalInCart($quote,$regex,$sku){
+        $totalInCart = 0;
+        foreach($quote->getAllVisibleItems() as $_item) {
+            //echo 'Sku: '.$_item->getSku().'<br/>';
+            //echo 'Quantity: '.$_item->getQty().'<br/>';
+            //if ($_item->getSku() == $sku ){
+            if(preg_match($regex, $_item->getSku() )){
+                $totalInCart = $totalInCart + $_item->getQty();
+            }
+        }
+
+        return $totalInCart;
+    }
+
 }
