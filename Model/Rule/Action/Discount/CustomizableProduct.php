@@ -222,7 +222,9 @@ class CustomizableProduct extends AbstractDiscount
                             
                             if ($optionValue == $optValue){
                                  //Setting Total Qty based on optTitle And optValue to the whole Cart;
-                                 $jplData->settotalQty($qty);
+                                 if($addQty){
+                                    $jplData->settotalQty($qty);
+                                 }
                             }
                         }
                     }
@@ -255,7 +257,9 @@ class CustomizableProduct extends AbstractDiscount
                         if($optionTitle == $optTitle){
 
                             if ($optionValue == $optValue){
-                                 $jplData->settotalQty($qty);
+                                if($addQty){
+                                    $jplData->settotalQty($qty);
+                                 }
                             }
                         }
                     }
