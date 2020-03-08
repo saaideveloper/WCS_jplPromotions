@@ -141,6 +141,34 @@ class CustomizableProduct extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
+
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+             //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
+            //Arguments
+            //  1. $item
+            //  2. $optionTitle
+            //  3. $optionValue
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
+                //@TODO Refactor To Move to A helper function
+
+                $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+
+                $customOptions = $options['options'];
+                if (!empty($customOptions)) {
+                    foreach ($customOptions as $option) {
+                        $optionTitle = $option['label'];
+                        $optionValue = $option['value'];
+
+                        if($optionTitle == $optTitle){
+
+                            if ($optionValue == $optValue){
+                                 //$jplData->settotalQty($qty);
+                            }
+                        }
+                    }
+                }else{
+                }
+
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //END VARIABLES
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
