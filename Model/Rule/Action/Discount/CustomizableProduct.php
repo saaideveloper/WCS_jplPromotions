@@ -163,10 +163,16 @@ class CustomizableProduct extends AbstractDiscount
 
                             if ($optionValue == $optValue){
                                  //$jplData->settotalQty($qty);
+                                 $addQty=1;
+                            }else{
+                                $addQty=0;
                             }
+                        }else{
+                            $addQty=0;
                         }
                     }
                 }else{
+                    $addQty=0;
                 }
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
