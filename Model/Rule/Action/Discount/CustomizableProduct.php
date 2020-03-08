@@ -165,6 +165,8 @@ class CustomizableProduct extends AbstractDiscount
         //END VARIABLES
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+        //@TODO Begin To Remove @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+        /*
         $quote = $item->getQuote();
 
         $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
@@ -189,6 +191,8 @@ class CustomizableProduct extends AbstractDiscount
         //Discount for items that not follow the cart rule
 
         }
+        */
+        //@END Begin To Remove @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
         
         //TOTAL QTY PER ROW IN CART
         if($jplData->gettotalQty() < 0){
@@ -218,6 +222,7 @@ class CustomizableProduct extends AbstractDiscount
      * return int
      */
     public function getTotalInCart($quote,$regex){
+        //@TODO To Move to Helper
         $totalInCart = 0;
         foreach($quote->getAllVisibleItems() as $_item) {
             //echo 'Sku: '.$_item->getSku().'<br/>';
