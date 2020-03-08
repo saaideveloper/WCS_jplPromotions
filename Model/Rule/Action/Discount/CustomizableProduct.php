@@ -142,50 +142,42 @@ class CustomizableProduct extends AbstractDiscount
         }
 
 	
-	$quote = $item->getQuote();
+	    $quote = $item->getQuote();
 
         $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
 
-$addQty =0;
+        $addQty =0;
+        
         if (!$quote->getData($calculateId)) {
 
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-             //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
-            //Arguments
-            //  1. $item
-            //  2. $optionTitle
-            //  3. $optionValue
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
-                //@TODO Refactor To Move to A helper function
+            $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
-                $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+            $customOptions = $options['options'];
+            if (!empty($customOptions)) {
+                foreach ($customOptions as $option) {
+                    $optionTitle = $option['label'];
+                    $optionValue = $option['value'];
 
-                $customOptions = $options['options'];
-                if (!empty($customOptions)) {
-                    foreach ($customOptions as $option) {
-                        $optionTitle = $option['label'];
-                        $optionValue = $option['value'];
+                    if($optionTitle == $optTitle){
+			        //if(!empty($optionTitle){
+			        //if($optTitle == 'Material'){
+			        //if(1){
 
-                        //if($optionTitle == $optTitle){
-			//if(!empty($optionTitle){
-			if($optTitle == 'Material'){
-			//if(1){
-
-                            //if ($optionValue == $optValue){
-			    if($optValue == '2mm'){
-			    //if(1){
-                                 //$jplData->settotalQty($qty);
-                                 $addQty=1;
-                            }else{
-                                $addQty=0;
-                            }
+                        if ($optionValue == $optValue){
+			            //if($optValue == '2mm'){
+			            //if(1){
+                            //$jplData->settotalQty($qty);
+                            $addQty=1;
                         }else{
-                            $addQty=0;
+                            //$addQty=0;
                         }
+                    }else{
+                        //$addQty=0;
                     }
-                }else{
-                    $addQty=0;
                 }
+            }else{
+                    //$addQty=0;
+            }
 	}
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //END VARIABLES
@@ -213,16 +205,16 @@ $addQty =0;
 
             
 
-                if($addQty){
-                    $jplData->settotalQty($qty);
-                 }
+            if($addQty){
+                $jplData->settotalQty($qty);
+            }
         }else{
         //@TODO TO CHECK WHY ONLY if (!$quote->getData($calculateId)) { ONLY APPLY FOR THE FIRST ITEM
         //Discount for items that not follow the cart rule
 
-                if($addQty){
-                    $jplData->settotalQty($qty);
-                 }
+            if($addQty){
+                $jplData->settotalQty($qty);
+            }
 
         }
         
