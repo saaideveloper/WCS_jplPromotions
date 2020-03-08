@@ -241,7 +241,7 @@ class CustomizableProduct extends AbstractDiscount
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //If the individual row has more than 21
 if($jplData->gettotalQty() > 20){
-    $discountData->setAmount(3.50);
+    //$discountData->setAmount(3.50);
 }else{
     $totalInCart = 0;
     $regex='/\b'.$optValue.'\b/';
