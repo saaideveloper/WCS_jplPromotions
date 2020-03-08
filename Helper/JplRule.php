@@ -99,17 +99,44 @@ class JplRule extends AbstractHelper
         return $valid;
     }
 
-    /** setTotalQty function 
+    /** checkIfMatchCustomOptions function 
      * Set a The Qtotal qty of products With the same Title and Value in 
      * the Cart and store it in JplData
      * 
      * @param Item          $item           Magento Row item in Cart
      * @param OptionTitle   $optionTitle    WCS jplPromotions Customizable Option Title
      * @param OptionValue   $optionValue    WCS jplPromotions Customizable Option Value
-     * @param Qty           $qty            Magento Qty Row item in Cart
-     * @param JplData       $jplData        WCS\jplPromotions\Model\Rule\Action\Discount\JplData
+     * 
+     * @return boolean 
      */
-    public function setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData){
+    public function checkIfMatchCustomOptions($item,$optionTitle,$optionValue){
+
+        $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+
+        $customOptions = $options['options'];
+        
+        if (!empty($customOptions)) {
+            foreach ($customOptions as $option) {
+                $optionTitle = $option['label'];
+                $optionValue = $option['value'];
+
+                if($optionTitle == $optTitle){
+                            
+                    if ($optionValue == $optValue){
+                        //Setting Total Qty based on optTitle And optValue to the whole Cart;
+                        //$jplData->settotalQty($qty);
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+                }else{
+                    return 0;
+                }
+            }
+        }else{
+            //IF CUSTOMOPTIONS IS EMPTY
+            return 0;
+        }
 
     }
 }
