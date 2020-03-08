@@ -141,6 +141,13 @@ class CustomizableProduct extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
+	
+	$quote = $item->getQuote();
+
+        $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
+
+$addQty =0;
+        if (!$quote->getData($calculateId)) {
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
              //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
@@ -159,9 +166,14 @@ class CustomizableProduct extends AbstractDiscount
                         $optionTitle = $option['label'];
                         $optionValue = $option['value'];
 
-                        if($optionTitle == $optTitle){
+                        //if($optionTitle == $optTitle){
+			//if(!empty($optionTitle){
+			if($optTitle == 'Material'){
+			//if(1){
 
-                            if ($optionValue == $optValue){
+                            //if ($optionValue == $optValue){
+			    if($optValue == '2mm'){
+			    //if(1){
                                  //$jplData->settotalQty($qty);
                                  $addQty=1;
                             }else{
@@ -174,15 +186,16 @@ class CustomizableProduct extends AbstractDiscount
                 }else{
                     $addQty=0;
                 }
-
+	}
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //END VARIABLES
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-        $quote = $item->getQuote();
+        //$quote = $item->getQuote();
 
-        $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
+        //$calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
         if (!$quote->getData($calculateId)) {
+	
             $quote->setData($calculateId, true);
 
             
@@ -200,83 +213,16 @@ class CustomizableProduct extends AbstractDiscount
 
             
 
-            $discount =  $jplRule->getMaximumNumberProduct() * $item->getPriceInclTax(); 
-
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
-            //Arguments
-            //  1. $item
-            //  2. $optionTitle
-            //  3. $optionValue
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                //@TODO Refactor To Move to A helper function
-/*
-                $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
-
-                $customOptions = $options['options'];
-                if (!empty($customOptions)) {
-                    foreach ($customOptions as $option) {
-                        $optionTitle = $option['label'];
-                        $optionValue = $option['value'];
-
-                        if($optionTitle == $optTitle){
-                            
-                            if ($optionValue == $optValue){
-                                 //Setting Total Qty based on optTitle And optValue to the whole Cart;
-                                 if($addQty){
-                                    $jplData->settotalQty($qty);
-                                 }
-                            }
-                        }
-                    }
-                }else{
-                }
-*/
                 if($addQty){
                     $jplData->settotalQty($qty);
                  }
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //END to move to a function in a Helper checkIfMatchCustomOptions()
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         }else{
         //@TODO TO CHECK WHY ONLY if (!$quote->getData($calculateId)) { ONLY APPLY FOR THE FIRST ITEM
         //Discount for items that not follow the cart rule
 
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-             //BEGIN to move to a function in a Helper checkIfMatchCustomOptions($item,$optionTitle,$optionValue)
-            //Arguments
-            //  1. $item
-            //  2. $optionTitle
-            //  3. $optionValue
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
-                //@TODO Refactor To Move to A helper function
-/*
-                $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
-
-                $customOptions = $options['options'];
-                if (!empty($customOptions)) {
-                    foreach ($customOptions as $option) {
-                        $optionTitle = $option['label'];
-                        $optionValue = $option['value'];
-
-                        if($optionTitle == $optTitle){
-
-                            if ($optionValue == $optValue){
-                                if($addQty){
-                                    $jplData->settotalQty($qty);
-                                 }
-                            }
-                        }
-                    }
-                }else{
-                }
-*/
                 if($addQty){
                     $jplData->settotalQty($qty);
                  }
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            //END to move to a function in a Helper checkIfMatchCustomOptions()
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         }
         
