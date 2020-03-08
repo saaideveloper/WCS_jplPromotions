@@ -218,7 +218,7 @@ if($jplData->gettotalQty() < 0){
     //If($item->getProduct()->getSku() == $sku){
     if(preg_match($regex, $item->getProduct()->getSku() )){
         //if($totalInCart > $x){
-        if($this->getTotalInCart() > $x){
+        if($this->getTotalInCart($quote,$regex) > $x){
             $discountData->setAmount($jplData->gettotalQty());
         }
     }
@@ -239,7 +239,7 @@ if($jplData->gettotalQty() < 0){
      * 
      * return int
      */
-    public function getTotalInCart($quote,$regex,$sku){
+    public function getTotalInCart($quote,$regex){
         $totalInCart = 0;
         foreach($quote->getAllVisibleItems() as $_item) {
             //echo 'Sku: '.$_item->getSku().'<br/>';
