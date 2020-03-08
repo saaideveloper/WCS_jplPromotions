@@ -159,24 +159,12 @@ class CustomizableProduct extends AbstractDiscount
                     $optionValue = $option['value'];
 
                     if($optionTitle == $optTitle){
-			        //if(!empty($optionTitle){
-			        //if($optTitle == 'Material'){
-			        //if(1){
 
                         if ($optionValue == $optValue){
-			            //if($optValue == '2mm'){
-			            //if(1){
-                            //$jplData->settotalQty($qty);
                             $addQty=1;
-                        }else{
-                            //$addQty=0;
                         }
-                    }else{
-                        //$addQty=0;
                     }
                 }
-            }else{
-                    //$addQty=0;
             }
 	}
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
