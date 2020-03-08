@@ -156,6 +156,7 @@ class CustomizableProduct extends AbstractDiscount
 
                         if ($optionValue == $optValue){
                             $addQty=1;
+                            $jplData->settotalQty($qty);
                         }
                     }
                 }
@@ -183,19 +184,9 @@ class CustomizableProduct extends AbstractDiscount
                 $rule,
                 $jplRule
             );
-
-            
-
-            if($addQty){
-                $jplData->settotalQty($qty);
-            }
         }else{
         //@TODO TO CHECK WHY ONLY if (!$quote->getData($calculateId)) { ONLY APPLY FOR THE FIRST ITEM
         //Discount for items that not follow the cart rule
-
-            if($addQty){
-                $jplData->settotalQty($qty);
-            }
 
         }
         
