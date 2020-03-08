@@ -98,4 +98,18 @@ class JplRule extends AbstractHelper
 
         return $valid;
     }
+
+    /** setTotalQty function 
+     * Set a The Qtotal qty of products With the same Title and Value in 
+     * the Cart and store it in JplData
+     * 
+     * @param Item          $item           Magento Row item in Cart
+     * @param OptionTitle   $optionTitle    WCS jplPromotions Customizable Option Title
+     * @param OptionValue   $optionValue    WCS jplPromotions Customizable Option Value
+     * @param Qty           $qty            Magento Qty Row item in Cart
+     * @param JplData       $jplData        WCS\jplPromotions\Model\Rule\Action\Discount\JplData
+     */
+    public function setTotalQty($item,$optionTitle,$optionValue,$qty,$jplData){
+
+    }
 }
