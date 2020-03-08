@@ -17,6 +17,7 @@ use Magento\SalesRule\Model\Rule\Action\Discount\Data as DiscountData;
 use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
 use Magento\SalesRule\Model\Validator;
 use WCS\jplPromotions\Api\JplRuleRepositoryInterface;
+use WCS\jplPromotions\Helper\JplRule as JplRuleHelper;
 use WCS\jplPromotions\Helper\Cache as JplRuleCacheHelper;
 use WCS\jplPromotions\Model\JplRule as JplRuleModel;
 use WCS\jplPromotions\Model\Rule\Action\Discount\JplData;
@@ -41,6 +42,11 @@ class CustomizableProduct extends AbstractDiscount
     protected $jplRuleCacheHelper;
 
     /**
+     * @var JplRuleCacheHelper
+     */
+    protected $jplRuleHelper;
+
+    /**
      * @var JplRuleRepositoryInterface
      */
     protected $jplRuleRepository;
@@ -57,8 +63,9 @@ class CustomizableProduct extends AbstractDiscount
      * @param DataFactory                 $discountDataFactory Discount data factory
      * @param PriceCurrencyInterface      $priceCurrency       Price currency
      * @param checkoutSession             $checkoutSession     Checkout session
-     * @param JplRuleCacheHelper         $jplRuleCacheHelper Jpl rule cache helper
-     * @param JplRuleRepositoryInterface $jplRuleRepository  Jpl rule repository
+     * @param JplRuleCacheHelper          $jplRuleCacheHelper Jpl rule cache helper
+     * @param JplRuleHelper               $jplRuleHelper Jpl rule helper
+     * @param JplRuleRepositoryInterface  $jplRuleRepository  Jpl rule repository
      * @param JplRuleModel                $jplRuleModel         Jpl rule Model
      */
     public function __construct(
@@ -67,11 +74,13 @@ class CustomizableProduct extends AbstractDiscount
         PriceCurrencyInterface $priceCurrency,
         checkoutSession $checkoutSession,
         JplRuleCacheHelper $jplRuleCacheHelper,
+        JplRuleHelper $jplRuleHelper,
         JplRuleRepositoryInterface $jplRuleRepository,
         JplRuleModel $jplRuleModel
     ) {
         $this->checkoutSession = $checkoutSession;
         $this->jplRuleCacheHelper = $jplRuleCacheHelper;
+        $this->jplRuleHelper = $jplRuleHelper;
         $this->jplRuleRepository = $jplRuleRepository;
         $this->jplRuleModel =$jplRuleModel;
 
