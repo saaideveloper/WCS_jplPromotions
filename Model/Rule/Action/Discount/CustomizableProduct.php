@@ -165,8 +165,6 @@ class CustomizableProduct extends AbstractDiscount
         //END VARIABLES
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-        //@TODO Begin To Remove @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
-        /*
         $quote = $item->getQuote();
 
         $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
@@ -191,7 +189,6 @@ class CustomizableProduct extends AbstractDiscount
         //Discount for items that not follow the cart rule
 
         }
-        */
         //@END Begin To Remove @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
         
         //TOTAL QTY PER ROW IN CART
