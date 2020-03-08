@@ -141,14 +141,8 @@ class CustomizableProduct extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
-	
-	    $quote = $item->getQuote();
-
-        $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
-
         $addQty =0;
         
-        if (!$quote->getData($calculateId)) {
 
             $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
 
@@ -166,14 +160,13 @@ class CustomizableProduct extends AbstractDiscount
                     }
                 }
             }
-	}
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //END VARIABLES
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-        //$quote = $item->getQuote();
+        $quote = $item->getQuote();
 
-        //$calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
+        $calculateId = 'calculate_jpl_rule_'.$rule->getRuleId();
         if (!$quote->getData($calculateId)) {
 	
             $quote->setData($calculateId, true);
