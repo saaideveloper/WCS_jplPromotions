@@ -238,7 +238,7 @@ class CustomizableProduct extends AbstractDiscount
 //variables $quote , $sku , $item , $x
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //If the individual row has more than 21
-if($jplData->gettotalQty() > 20){
+if($jplData->gettotalQty() < 0){
     //$discountData->setAmount(3.50);
 }else{
     $totalInCart = 0;
